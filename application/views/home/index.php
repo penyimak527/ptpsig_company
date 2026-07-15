@@ -253,11 +253,19 @@
 
 <div id="brand" class="infetech-sponser-area">
 	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-7">
+				<div class="section-title text-center mb-55">
+					<span>Brand & Client</span>
+					<h4 class="title">Logo brand yang sudah bekerja sama dengan Piramidsoft.</h4>
+				</div>
+			</div>
+		</div>
 		<div class="row infetech-sponser-slide">
 			<?php foreach ($brands as $brand) : ?>
 				<div class="col-lg-3">
 					<div class="infetech-sponser-item">
-						<img src="<?php echo $asset_path; ?>/images/<?php echo $brand; ?>" alt="">
+						<img src="<?php echo $asset_path; ?>/<?php echo $brand; ?>" alt="Brand client Piramidsoft">
 					</div>
 				</div>
 			<?php endforeach; ?>
