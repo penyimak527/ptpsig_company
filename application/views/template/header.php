@@ -74,7 +74,8 @@
 	<section class="infetech-header-area header-sticky">
 		<div class="header-wrapper">
 			<div class="templates-logo">
-				<a href="#beranda"><img src="<?php echo $asset_path; ?>/images/logo-white.png" alt="<?php echo $company['name']; ?>"></a>
+				<!-- <a href="#beranda"><img src="<?php echo $asset_path; ?>/images/logo-white.png" alt="<?php echo $company['name']; ?>"></a> -->
+				<a href="#beranda"><img src="<?php echo $asset_path; ?>/img_pyramid/logo/logo_pyramid_putih.png" alt="<?php echo $company['name']; ?>" style="width: 90px;"></a>
 			</div>
 			<div class="header-box">
 				<div class="header-topbar">

@@ -135,8 +135,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="row infetech-feature-slide">
-			<div class="col-lg-2">
+		<div class="row justify-content-center">
+			<div class="col-lg-4 col-md-6">
 				<div class="single-infetech-feature-item">
 					<div class="icon">
 						<img src="<?php echo $asset_path; ?>/images/icon/service-icon-1.png" alt="">
@@ -147,7 +147,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-2">
+			<div class="col-lg-4 col-md-6">
 				<div class="single-infetech-feature-item">
 					<div class="icon">
 						<img src="<?php echo $asset_path; ?>/images/icon/service-icon-2.png" alt="">
@@ -158,47 +158,14 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-2">
+			<div class="col-lg-4 col-md-6">
 				<div class="single-infetech-feature-item">
 					<div class="icon">
 						<img src="<?php echo $asset_path; ?>/images/icon/service-icon-3.png" alt="">
 					</div>
 					<div class="content">
-						<h4 class="title"><a href="#">Legalitas <br> Usaha</a></h4>
-						<p>Data resmi perusahaan akan dilengkapi.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-2">
-				<div class="single-infetech-feature-item">
-					<div class="icon">
-						<img src="<?php echo $asset_path; ?>/images/icon/service-icon-1.png" alt="">
-					</div>
-					<div class="content">
-						<h4 class="title"><a href="#">Struktur <br> Tim</a></h4>
-						<p>Peran organisasi ditampilkan jelas.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-2">
-				<div class="single-infetech-feature-item">
-					<div class="icon">
-						<img src="<?php echo $asset_path; ?>/images/icon/service-icon-2.png" alt="">
-					</div>
-					<div class="content">
-						<h4 class="title"><a href="#">Brand <br> Partner</a></h4>
-						<p>Logo kerja sama akan ditampilkan.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-2">
-				<div class="single-infetech-feature-item">
-					<div class="icon">
-						<img src="<?php echo $asset_path; ?>/images/icon/service-icon-3.png" alt="">
-					</div>
-					<div class="content">
-						<h4 class="title"><a href="#">Digital <br> Support</a></h4>
-						<p>Pendampingan dan maintenance sistem.</p>
+						<h4 class="title"><a href="#">Fokus <br> Layanan</a></h4>
+						<p>Website, aplikasi, integrasi, dan support digital.</p>
 					</div>
 				</div>
 			</div>
@@ -298,7 +265,7 @@
 	</div>
 </div>
 
-<section class="infetech-testimonial-area">
+<!-- <section class="infetech-testimonial-area">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
@@ -359,7 +326,7 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section> -->
 
 <section id="tim" class="infetech-team-area">
 	<div class="container">
@@ -436,7 +403,7 @@
 	</div>
 </section>
 
-<section class="infetech-blog-area pt-115 pb-120">
+<!-- <section class="infetech-blog-area pt-115 pb-120">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-lg-6">
@@ -503,7 +470,7 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section> -->
 
 <section class="infetech-cta-2-area pt-100 pb-100">
 	<div class="container">
