@@ -45,7 +45,7 @@
 	</div>
 </section>
 
-<section id="tentang" class="infetech-about-area">
+<section id="tentang" class="infetech-about-area pyramid-section-compact">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6">
@@ -98,77 +98,34 @@
 	</div>
 </section>
 
-<section id="layanan" class="infetech-service-area">
+<section id="layanan" class="infetech-service-area pyramid-section-compact">
 	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-8">
+				<div class="section-title text-center mb-55">
+					<span>Layanan Kami</span>
+					<h4 class="title">Solusi digital untuk kebutuhan bisnis, lembaga, dan brand yang ingin berkembang.</h4>
+				</div>
+			</div>
+		</div>
 		<div class="row">
 			<?php foreach ($services as $index => $service) : ?>
-				<div class="col-lg-4 col-md-6">
+				<div class="col-lg-3 col-md-6">
 					<div class="single-infetech-serice-item animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="<?php echo $index * 300; ?>ms">
 						<div class="thumb">
-							<img src="<?php echo $asset_path; ?>/images/<?php echo $service['image']; ?>" alt="">
+							<img src="<?php echo $asset_path; ?>/<?php echo $service['image']; ?>" alt="<?php echo $service['title']; ?>">
 						</div>
 						<div class="content">
 							<div class="icon">
 								<img src="<?php echo $asset_path; ?>/images/icon/<?php echo $service['icon']; ?>" alt="">
 							</div>
 							<h3 class="title"><a href="<?php echo $company['service_url']; ?>"><?php echo $service['title']; ?></a></h3>
+							<p class="pyramid-card-text"><?php echo $service['description']; ?></p>
+							<a class="pyramid-small-btn" href="<?php echo $company['service_url']; ?>">Selengkapnya</a>
 						</div>
 					</div>
 				</div>
 			<?php endforeach; ?>
-		</div>
-	</div>
-</section>
-
-<section class="infetech-feature-area">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-6">
-				<div class="section-title section-title-2">
-					<span>Visi, Misi, dan Fokus</span>
-					<h4 class="title">Dealing in all Professional IT Services</h4>
-				</div>
-			</div>
-			<div class="col-lg-6">
-				<div class="section-title pl-100">
-					<p>Piramidsoft menyiapkan layanan teknologi yang membantu perusahaan, lembaga, sekolah, dan pelaku usaha mengenalkan profil serta membangun sistem digital.</p>
-				</div>
-			</div>
-		</div>
-		<div class="row justify-content-center">
-			<div class="col-lg-4 col-md-6">
-				<div class="single-infetech-feature-item">
-					<div class="icon">
-						<img src="<?php echo $asset_path; ?>/images/icon/service-icon-1.png" alt="">
-					</div>
-					<div class="content">
-						<h4 class="title"><a href="#">Visi <br> Perusahaan</a></h4>
-						<p>Menjadi partner digital terpercaya.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6">
-				<div class="single-infetech-feature-item">
-					<div class="icon">
-						<img src="<?php echo $asset_path; ?>/images/icon/service-icon-2.png" alt="">
-					</div>
-					<div class="content">
-						<h4 class="title"><a href="#">Misi <br> Utama</a></h4>
-						<p>Menghadirkan solusi digital tepat guna.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6">
-				<div class="single-infetech-feature-item">
-					<div class="icon">
-						<img src="<?php echo $asset_path; ?>/images/icon/service-icon-3.png" alt="">
-					</div>
-					<div class="content">
-						<h4 class="title"><a href="#">Fokus <br> Layanan</a></h4>
-						<p>Website, aplikasi, integrasi, dan support digital.</p>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 </section>
@@ -208,7 +165,7 @@
 	</div>
 </div>
 
-<section id="struktur" class="infetech-project-area pt-115 ">
+<section id="struktur" class="infetech-project-area pyramid-section-compact">
 	<div class="container">
 		<div class="row align-items-center mb-55">
 			<div class="col-lg-6">
@@ -256,8 +213,8 @@
 		<div class="row justify-content-center">
 			<div class="col-lg-7">
 				<div class="section-title text-center mb-55">
-					<span>Brand & Client</span>
-					<h4 class="title">Logo brand yang sudah bekerja sama dengan Piramidsoft.</h4>
+					<span>Pelanggan Kami</span>
+					<h4 class="title">Berbagai Macam Industri dan Bisnis yang Telah Mempercayai Kami</h4>
 				</div>
 			</div>
 		</div>
@@ -336,7 +293,7 @@
 	</div>
 </section> -->
 
-<section id="tim" class="infetech-team-area">
+<section id="tim" class="infetech-team-area pyramid-section-compact">
 	<div class="container">
 		<div class="row align-items-center mb-50">
 			<div class="col-lg-6">
@@ -375,6 +332,46 @@
 					</div>
 				</div>
 			<?php endforeach; ?>
+		</div>
+	</div>
+</section>
+
+<section class="infetech-blog-area pyramid-section-compact">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-7">
+				<div class="section-title text-center mb-55">
+					<span>Kegiatan</span>
+					<h4 class="title">Beberapa aktivitas dan proses kerja Piramidsoft bersama klien.</h4>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<?php foreach (array_slice($activities, 0, 3) as $index => $activity) : ?>
+				<div class="col-lg-4 col-md-6">
+					<div class="single-blog-item animated wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="<?php echo $index * 300; ?>ms">
+						<div class="thumb">
+							<a href="<?php echo site_url('home/detail_kegiatan/' . $activity['slug']); ?>"><img src="<?php echo $asset_path; ?>/<?php echo $activity['image']; ?>" alt="<?php echo $activity['title']; ?>"></a>
+							<span><?php echo $activity['category']; ?></span>
+						</div>
+						<div class="content">
+							<div class="blog-meta">
+								<ul>
+									<li><i class="fal fa-user-circle"></i> <?php echo $activity['client']; ?></li>
+									<li><i class="fal fa-calendar-alt"></i> <?php echo date('d M Y', strtotime($activity['date'])); ?></li>
+								</ul>
+								<h4 class="title"><a href="<?php echo site_url('home/detail_kegiatan/' . $activity['slug']); ?>"><?php echo $activity['title']; ?></a></h4>
+								<a href="<?php echo site_url('home/detail_kegiatan/' . $activity['slug']); ?>">Selengkapnya</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			<?php endforeach; ?>
+		</div>
+		<div class="row">
+			<div class="col-lg-12 text-center mt-40">
+				<a class="main-btn" href="<?php echo site_url('home/kegiatan'); ?>">Lihat Semua Kegiatan</a>
+			</div>
 		</div>
 	</div>
 </section>

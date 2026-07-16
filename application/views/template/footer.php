@@ -5,7 +5,7 @@
 				<div class="col-lg-3 col-md-6">
 					<div class="footer-about">
 						<!-- <a href="#beranda"><img src="<?php echo $asset_path; ?>/images/logo-white.png" alt="<?php echo $company['name']; ?>"></a> -->
-						<a href="#beranda"><img src="<?php echo $asset_path; ?>/img_pyramid/logo/logo_pyramid_putih.png" alt="<?php echo $company['name']; ?>" style="width: 90px;"></a>
+						<a href="<?php echo site_url(); ?>#beranda"><img src="<?php echo $asset_path; ?>/img_pyramid/logo/logo_pyramid_putih.png" alt="<?php echo $company['name']; ?>" style="width: 90px;"></a>
 						<p>Company profile Piramidsoft untuk memperkenalkan profil perusahaan, legalitas, lokasi, tim, struktur organisasi, visi-misi, layanan, dan brand partner.</p>
 						<ul>
 							<li><a href="#"><i class="fab fa-twitter"></i></a></li>
@@ -21,6 +21,11 @@
 						<ul>
 							<?php foreach ($menus as $menu) : ?>
 								<li><a href="<?php echo $menu['url']; ?>"><?php echo $menu['label']; ?></a></li>
+								<?php if (!empty($menu['children'])) : ?>
+									<?php foreach ($menu['children'] as $child) : ?>
+										<li><a href="<?php echo $child['url']; ?>"><?php echo $child['label']; ?></a></li>
+									<?php endforeach; ?>
+								<?php endif; ?>
 							<?php endforeach; ?>
 						</ul>
 					</div>

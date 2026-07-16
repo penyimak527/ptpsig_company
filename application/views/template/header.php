@@ -15,6 +15,55 @@
 	<link rel="stylesheet" href="<?php echo $asset_path; ?>/css/slick.css">
 	<link rel="stylesheet" href="<?php echo $asset_path; ?>/css/default.css">
 	<link rel="stylesheet" href="<?php echo $asset_path; ?>/css/style.css">
+	<style>
+		.pyramid-section-compact {
+			padding-top: 80px !important;
+			padding-bottom: 80px !important;
+		}
+
+		.pyramid-card-text {
+			font-size: 15px;
+			line-height: 26px;
+			color: #6c6a72;
+			margin: 12px 0 18px;
+		}
+
+		.pyramid-small-btn {
+			display: inline-block;
+			background: #f2f4f8;
+			color: #0e1f35;
+			font-size: 14px;
+			font-weight: 700;
+			padding: 9px 18px;
+		}
+
+		.pyramid-small-btn:hover {
+			background: #0e1f35;
+			color: #fff;
+		}
+
+		.pyramid-meta-list {
+			background: #f2f4f8;
+			padding: 30px;
+		}
+
+		.pyramid-meta-list li {
+			display: flex;
+			justify-content: space-between;
+			gap: 20px;
+			border-bottom: 1px solid #dfe3ea;
+			padding: 12px 0;
+			color: #6c6a72;
+		}
+
+		.pyramid-meta-list li:last-child {
+			border-bottom: 0;
+		}
+
+		.pyramid-meta-list strong {
+			color: #0e1f35;
+		}
+	</style>
 	
 </head>
 
@@ -58,7 +107,16 @@
 						<div id="menu" class="text-left ">
 							<ul class="offcanvas_main_menu">
 								<?php foreach ($menus as $menu) : ?>
-									<li class="menu-item-has-children active"><a href="<?php echo $menu['url']; ?>"><?php echo $menu['label']; ?></a></li>
+									<li class="<?php echo !empty($menu['children']) ? 'menu-item-has-children' : ''; ?>">
+										<a href="<?php echo $menu['url']; ?>"><?php echo $menu['label']; ?></a>
+										<?php if (!empty($menu['children'])) : ?>
+											<ul class="sub-menu">
+												<?php foreach ($menu['children'] as $child) : ?>
+													<li><a href="<?php echo $child['url']; ?>"><?php echo $child['label']; ?></a></li>
+												<?php endforeach; ?>
+											</ul>
+										<?php endif; ?>
+									</li>
 								<?php endforeach; ?>
 							</ul>
 						</div>
@@ -75,7 +133,7 @@
 		<div class="header-wrapper">
 			<div class="templates-logo">
 				<!-- <a href="#beranda"><img src="<?php echo $asset_path; ?>/images/logo-white.png" alt="<?php echo $company['name']; ?>"></a> -->
-				<a href="#beranda"><img src="<?php echo $asset_path; ?>/img_pyramid/logo/logo_pyramid_putih.png" alt="<?php echo $company['name']; ?>" style="width: 90px;"></a>
+				<a href="<?php echo site_url(); ?>#beranda"><img src="<?php echo $asset_path; ?>/img_pyramid/logo/logo_pyramid_putih.png" alt="<?php echo $company['name']; ?>" style="width: 90px;"></a>
 			</div>
 			<div class="header-box">
 				<div class="header-topbar">
@@ -109,7 +167,16 @@
 					<div class="header-main-nav-box">
 						<ul>
 							<?php foreach ($menus as $menu) : ?>
-								<li><a href="<?php echo $menu['url']; ?>"><?php echo $menu['label']; ?></a></li>
+								<li class="<?php echo !empty($menu['children']) ? 'menu-item-has-children' : ''; ?>">
+									<a href="<?php echo $menu['url']; ?>"><?php echo $menu['label']; ?></a>
+									<?php if (!empty($menu['children'])) : ?>
+										<ul class="sub-menu">
+											<?php foreach ($menu['children'] as $child) : ?>
+												<li><a href="<?php echo $child['url']; ?>"><?php echo $child['label']; ?></a></li>
+											<?php endforeach; ?>
+										</ul>
+									<?php endif; ?>
+								</li>
 							<?php endforeach; ?>
 						</ul>
 					</div>
