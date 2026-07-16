@@ -379,7 +379,7 @@
 	</div>
 </section>
 
-<section class="infetech-video-area">
+<!-- <section class="infetech-video-area">
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-lg-7">
@@ -409,7 +409,7 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section> -->
 
 <!-- <section class="infetech-blog-area pt-115 pb-120">
 	<div class="container">
@@ -480,7 +480,7 @@
 	</div>
 </section> -->
 
-<section class="infetech-cta-2-area pt-100 pb-100">
+<!-- <section class="infetech-cta-2-area pt-100 pb-100">
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-lg-9">
@@ -496,4 +496,4 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section> -->
