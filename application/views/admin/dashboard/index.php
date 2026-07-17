@@ -60,10 +60,10 @@
 		<div class="col-lg-4">
 			<div class="card shadow mb-4">
 				<div class="card-header py-3">
-					<h6 class="m-0 font-weight-bold text-primary">Catatan Database</h6>
+					<h6 class="m-0 font-weight-bold text-primary">Status Admin</h6>
 				</div>
 				<div class="card-body">
-					<p>Struktur tabel tersedia di file SQL project. Setelah database diimport dan konfigurasi database diisi, data admin dapat diarahkan ke tabel asli.</p>
+					<p>Admin sudah terhubung ke database XAMPP dan siap mengelola kegiatan, struktur organisasi, visi misi, sejarah, team, dan akun admin.</p>
 					<a class="btn btn-primary btn-sm" href="<?php echo site_url('admin/kegiatan'); ?>">Kelola Konten</a>
 				</div>
 			</div>

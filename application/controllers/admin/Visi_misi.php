@@ -1,43 +1,41 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once APPPATH . 'controllers/admin/Admin_base.php';
 
-class Visi_misi extends CI_Controller
+class Visi_misi extends Admin_base
 {
-	public function __construct()
-	{
-		parent::__construct();
-		$this->load->helper('url');
-		$this->load->model('M_admin', 'admin');
-	}
+	protected $crud = array(
+		'table' => 'visi_misi',
+		'primary_key' => 'id_visi_misi',
+		'order_by' => 'urutan',
+		'order_dir' => 'ASC',
+		'fields' => array('tipe', 'judul', 'deskripsi', 'urutan', 'status'),
+		'status_options' => array('aktif', 'nonaktif'),
+		'columns' => array('tipe' => 'Tipe', 'judul' => 'Judul', 'urutan' => 'Urutan', 'status' => 'Status'),
+	);
 
 	public function index()
 	{
-		$data = $this->prepare_data('Admin Visi Misi', 'visi_misi');
-		$data['rows'] = $this->admin->get_visi_misi();
-		$data['columns'] = array('Tipe', 'Judul', 'Deskripsi', 'Status');
-		$data['fields'] = array('tipe', 'judul', 'deskripsi', 'status');
-		$data['page_label'] = 'Visi Misi';
-		$data['page_description'] = 'Kelola visi dan misi perusahaan.';
-		$this->render('admin/visi_misi/index', $data);
+		$this->render_crud('admin/visi_misi/index', 'Admin Visi Misi', 'visi_misi', 'Visi Misi', 'Kelola visi dan misi perusahaan.');
 	}
 
-	private function prepare_data($title, $active_menu)
+	public function list_data()
 	{
-		$base_path = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/');
-
-		return array(
-			'title' => $title,
-			'active_menu' => $active_menu,
-			'admin_asset_path' => ($base_path === '' ? '' : $base_path) . '/asstes_admin',
-		);
+		$this->ajax_list_response();
 	}
 
-	private function render($view, $data)
+	public function get($id)
 	{
-		$this->load->view('admin/template/header', $data);
-		$this->load->view('admin/template/sidebar', $data);
-		$this->load->view('admin/template/topbar', $data);
-		$this->load->view($view, $data);
-		$this->load->view('admin/template/footer', $data);
+		$this->ajax_get_response($id);
+	}
+
+	public function save()
+	{
+		$this->ajax_save_response();
+	}
+
+	public function delete($id)
+	{
+		$this->ajax_delete_response($id);
 	}
 }

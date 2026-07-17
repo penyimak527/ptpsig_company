@@ -57,6 +57,7 @@ class Home extends CI_Controller
 	{
 		$data = $this->model->get_home_data();
 		$base_path = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/');
+		$data['base_path'] = $base_path === '' ? '' : $base_path;
 		$data['asset_path'] = ($base_path === '' ? '' : $base_path) . '/assets';
 		$data['menus'] = $this->build_menu_urls($data['menus']);
 

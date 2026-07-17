@@ -49,6 +49,12 @@
 			<span>Team</span>
 		</a>
 	</li>
+	<li class="nav-item <?php echo $active_menu === 'admin_user' ? 'active' : ''; ?>">
+		<a class="nav-link" href="<?php echo site_url('admin/admin_user'); ?>">
+			<i class="fas fa-fw fa-user-shield"></i>
+			<span>Admin User</span>
+		</a>
+	</li>
 
 	<hr class="sidebar-divider d-none d-md-block">
 	<div class="text-center d-none d-md-inline">

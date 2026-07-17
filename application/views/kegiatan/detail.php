@@ -1,4 +1,12 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<?php
+if (!function_exists('pyramid_public_image_url')) {
+	function pyramid_public_image_url($path, $asset_path, $base_path)
+	{
+		return strpos($path, 'upload/') === 0 ? $base_path . '/' . $path : $asset_path . '/' . $path;
+	}
+}
+?>
 <section class="breadcrumb-area">
 	<div class="container">
 		<div class="row">
@@ -25,7 +33,7 @@
 				<div class="blog-details-box">
 					<div class="top-content">
 						<div class="thumb">
-							<img src="<?php echo $asset_path; ?>/<?php echo $activity['image']; ?>" alt="<?php echo $activity['title']; ?>">
+							<img src="<?php echo pyramid_public_image_url($activity['image'], $asset_path, $base_path); ?>" alt="<?php echo $activity['title']; ?>">
 						</div>
 						<ul>
 							<li><i class="fal fa-user-circle"></i> <?php echo $activity['client']; ?></li>

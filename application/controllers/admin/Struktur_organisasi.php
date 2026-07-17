@@ -1,43 +1,43 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once APPPATH . 'controllers/admin/Admin_base.php';
 
-class Struktur_organisasi extends CI_Controller
+class Struktur_organisasi extends Admin_base
 {
-	public function __construct()
-	{
-		parent::__construct();
-		$this->load->helper('url');
-		$this->load->model('M_admin', 'admin');
-	}
+	protected $crud = array(
+		'table' => 'struktur_organisasi',
+		'primary_key' => 'id_struktur',
+		'order_by' => 'urutan',
+		'order_dir' => 'ASC',
+		'fields' => array('parent_id', 'nama', 'jabatan', 'divisi', 'foto', 'deskripsi', 'urutan', 'status'),
+		'file_field' => 'foto',
+		'upload_path' => 'upload/struktur_organisasi',
+		'status_options' => array('aktif', 'nonaktif'),
+		'columns' => array('nama' => 'Nama', 'jabatan' => 'Jabatan', 'divisi' => 'Divisi', 'urutan' => 'Urutan', 'status' => 'Status'),
+	);
 
 	public function index()
 	{
-		$data = $this->prepare_data('Admin Struktur Organisasi', 'struktur_organisasi');
-		$data['rows'] = $this->admin->get_struktur_organisasi();
-		$data['columns'] = array('Nama', 'Jabatan', 'Divisi', 'Status');
-		$data['fields'] = array('nama', 'jabatan', 'divisi', 'status');
-		$data['page_label'] = 'Struktur Organisasi';
-		$data['page_description'] = 'Kelola susunan jabatan dan divisi perusahaan.';
-		$this->render('admin/struktur_organisasi/index', $data);
+		$this->render_crud('admin/struktur_organisasi/index', 'Admin Struktur Organisasi', 'struktur_organisasi', 'Struktur Organisasi', 'Kelola susunan jabatan, foto, dan divisi perusahaan.');
 	}
 
-	private function prepare_data($title, $active_menu)
+	public function list_data()
 	{
-		$base_path = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/');
-
-		return array(
-			'title' => $title,
-			'active_menu' => $active_menu,
-			'admin_asset_path' => ($base_path === '' ? '' : $base_path) . '/asstes_admin',
-		);
+		$this->ajax_list_response();
 	}
 
-	private function render($view, $data)
+	public function get($id)
 	{
-		$this->load->view('admin/template/header', $data);
-		$this->load->view('admin/template/sidebar', $data);
-		$this->load->view('admin/template/topbar', $data);
-		$this->load->view($view, $data);
-		$this->load->view('admin/template/footer', $data);
+		$this->ajax_get_response($id);
+	}
+
+	public function save()
+	{
+		$this->ajax_save_response();
+	}
+
+	public function delete($id)
+	{
+		$this->ajax_delete_response($id);
 	}
 }

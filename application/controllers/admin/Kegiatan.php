@@ -1,43 +1,45 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once APPPATH . 'controllers/admin/Admin_base.php';
 
-class Kegiatan extends CI_Controller
+class Kegiatan extends Admin_base
 {
-	public function __construct()
-	{
-		parent::__construct();
-		$this->load->helper('url');
-		$this->load->model('M_admin', 'admin');
-	}
+	protected $crud = array(
+		'table' => 'kegiatan',
+		'primary_key' => 'id_kegiatan',
+		'order_by' => 'tanggal',
+		'order_dir' => 'DESC',
+		'fields' => array('judul', 'slug', 'klien', 'kategori', 'tanggal', 'gambar', 'ringkasan', 'deskripsi', 'status'),
+		'file_field' => 'gambar',
+		'upload_path' => 'upload/kegiatan',
+		'slug_field' => 'slug',
+		'title_field' => 'judul',
+		'status_options' => array('publish', 'draft'),
+		'columns' => array('judul' => 'Judul', 'klien' => 'Klien', 'kategori' => 'Kategori', 'tanggal' => 'Tanggal', 'status' => 'Status'),
+	);
 
 	public function index()
 	{
-		$data = $this->prepare_data('Admin Kegiatan', 'kegiatan');
-		$data['rows'] = $this->admin->get_kegiatan();
-		$data['columns'] = array('Judul', 'Klien', 'Kategori', 'Tanggal', 'Status');
-		$data['fields'] = array('judul', 'klien', 'kategori', 'tanggal', 'status');
-		$data['page_label'] = 'Kegiatan';
-		$data['page_description'] = 'Kelola konten kegiatan yang tampil di halaman umum.';
-		$this->render('admin/kegiatan/index', $data);
+		$this->render_crud('admin/kegiatan/index', 'Admin Kegiatan', 'kegiatan', 'Kegiatan', 'Kelola konten kegiatan yang tampil di halaman umum.');
 	}
 
-	private function prepare_data($title, $active_menu)
+	public function list_data()
 	{
-		$base_path = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/');
-
-		return array(
-			'title' => $title,
-			'active_menu' => $active_menu,
-			'admin_asset_path' => ($base_path === '' ? '' : $base_path) . '/asstes_admin',
-		);
+		$this->ajax_list_response();
 	}
 
-	private function render($view, $data)
+	public function get($id)
 	{
-		$this->load->view('admin/template/header', $data);
-		$this->load->view('admin/template/sidebar', $data);
-		$this->load->view('admin/template/topbar', $data);
-		$this->load->view($view, $data);
-		$this->load->view('admin/template/footer', $data);
+		$this->ajax_get_response($id);
+	}
+
+	public function save()
+	{
+		$this->ajax_save_response();
+	}
+
+	public function delete($id)
+	{
+		$this->ajax_delete_response($id);
 	}
 }

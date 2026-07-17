@@ -1,43 +1,43 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once APPPATH . 'controllers/admin/Admin_base.php';
 
-class Sejarah extends CI_Controller
+class Sejarah extends Admin_base
 {
-	public function __construct()
-	{
-		parent::__construct();
-		$this->load->helper('url');
-		$this->load->model('M_admin', 'admin');
-	}
+	protected $crud = array(
+		'table' => 'sejarah',
+		'primary_key' => 'id_sejarah',
+		'order_by' => 'urutan',
+		'order_dir' => 'ASC',
+		'fields' => array('tahun', 'judul', 'deskripsi', 'gambar', 'urutan', 'status'),
+		'file_field' => 'gambar',
+		'upload_path' => 'upload/sejarah',
+		'status_options' => array('aktif', 'nonaktif'),
+		'columns' => array('tahun' => 'Tahun', 'judul' => 'Judul', 'urutan' => 'Urutan', 'status' => 'Status'),
+	);
 
 	public function index()
 	{
-		$data = $this->prepare_data('Admin Sejarah', 'sejarah');
-		$data['rows'] = $this->admin->get_sejarah();
-		$data['columns'] = array('Tahun', 'Judul', 'Status');
-		$data['fields'] = array('tahun', 'judul', 'status');
-		$data['page_label'] = 'Sejarah';
-		$data['page_description'] = 'Kelola riwayat dan milestone perusahaan.';
-		$this->render('admin/sejarah/index', $data);
+		$this->render_crud('admin/sejarah/index', 'Admin Sejarah', 'sejarah', 'Sejarah', 'Kelola riwayat dan milestone perusahaan.');
 	}
 
-	private function prepare_data($title, $active_menu)
+	public function list_data()
 	{
-		$base_path = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/');
-
-		return array(
-			'title' => $title,
-			'active_menu' => $active_menu,
-			'admin_asset_path' => ($base_path === '' ? '' : $base_path) . '/asstes_admin',
-		);
+		$this->ajax_list_response();
 	}
 
-	private function render($view, $data)
+	public function get($id)
 	{
-		$this->load->view('admin/template/header', $data);
-		$this->load->view('admin/template/sidebar', $data);
-		$this->load->view('admin/template/topbar', $data);
-		$this->load->view($view, $data);
-		$this->load->view('admin/template/footer', $data);
+		$this->ajax_get_response($id);
+	}
+
+	public function save()
+	{
+		$this->ajax_save_response();
+	}
+
+	public function delete($id)
+	{
+		$this->ajax_delete_response($id);
 	}
 }

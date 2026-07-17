@@ -3,59 +3,90 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_admin extends CI_Model
 {
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->database();
+	}
+
+	public function count_table($table, $where = array())
+	{
+		if (!empty($where)) {
+			$this->db->where($where);
+		}
+
+		return (int) $this->db->count_all_results($table);
+	}
+
+	public function get_all($table, $order_by = NULL, $direction = 'ASC')
+	{
+		if ($order_by !== NULL) {
+			$this->db->order_by($order_by, $direction);
+		}
+
+		return $this->db->get($table)->result_array();
+	}
+
+	public function get_where($table, $where)
+	{
+		return $this->db->get_where($table, $where)->row_array();
+	}
+
+	public function insert($table, $data)
+	{
+		$this->db->insert($table, $data);
+		return $this->db->insert_id();
+	}
+
+	public function update($table, $primary_key, $id, $data)
+	{
+		$this->db->where($primary_key, $id);
+		return $this->db->update($table, $data);
+	}
+
+	public function delete($table, $primary_key, $id)
+	{
+		$this->db->where($primary_key, $id);
+		return $this->db->delete($table);
+	}
+
 	public function get_dashboard_stats()
 	{
 		return array(
-			array('label' => 'Kegiatan', 'count' => count($this->get_kegiatan()), 'icon' => 'fa-calendar-alt', 'color' => 'primary'),
-			array('label' => 'Struktur', 'count' => count($this->get_struktur_organisasi()), 'icon' => 'fa-sitemap', 'color' => 'success'),
-			array('label' => 'Visi Misi', 'count' => count($this->get_visi_misi()), 'icon' => 'fa-bullseye', 'color' => 'info'),
-			array('label' => 'Team', 'count' => count($this->get_team()), 'icon' => 'fa-users', 'color' => 'warning'),
+			array('label' => 'Kegiatan', 'count' => $this->count_table('kegiatan'), 'icon' => 'fa-calendar-alt', 'color' => 'primary'),
+			array('label' => 'Struktur', 'count' => $this->count_table('struktur_organisasi'), 'icon' => 'fa-sitemap', 'color' => 'success'),
+			array('label' => 'Visi Misi', 'count' => $this->count_table('visi_misi'), 'icon' => 'fa-bullseye', 'color' => 'info'),
+			array('label' => 'Team', 'count' => $this->count_table('team'), 'icon' => 'fa-users', 'color' => 'warning'),
 		);
 	}
 
 	public function get_kegiatan()
 	{
-		return array(
-			array('judul' => 'Diskusi Kebutuhan Website Profile', 'klien' => 'Klien UMKM', 'kategori' => 'Konsultasi Digital', 'tanggal' => '2026-07-01', 'status' => 'publish'),
-			array('judul' => 'Koordinasi Pengembangan Sistem', 'klien' => 'Klien Operasional', 'kategori' => 'Pengembangan Kustom', 'tanggal' => '2026-07-08', 'status' => 'publish'),
-			array('judul' => 'Pendampingan Maintenance Website', 'klien' => 'Brand Partner', 'kategori' => 'Maintenance', 'tanggal' => '2026-07-12', 'status' => 'publish'),
-		);
+		return $this->get_all('kegiatan', 'created_at', 'DESC');
 	}
 
 	public function get_struktur_organisasi()
 	{
-		return array(
-			array('nama' => 'Nama Direktur', 'jabatan' => 'Direktur / Founder', 'divisi' => 'Leadership', 'status' => 'aktif'),
-			array('nama' => 'Nama Project Manager', 'jabatan' => 'Project Manager', 'divisi' => 'Management', 'status' => 'aktif'),
-			array('nama' => 'Nama Developer', 'jabatan' => 'Developer Team', 'divisi' => 'Development', 'status' => 'aktif'),
-			array('nama' => 'Nama Support', 'jabatan' => 'Support & Maintenance', 'divisi' => 'Support', 'status' => 'aktif'),
-		);
+		return $this->get_all('struktur_organisasi', 'urutan', 'ASC');
 	}
 
 	public function get_visi_misi()
 	{
-		return array(
-			array('tipe' => 'visi', 'judul' => 'Visi Perusahaan', 'deskripsi' => 'Menjadi partner digital terpercaya.', 'status' => 'aktif'),
-			array('tipe' => 'misi', 'judul' => 'Solusi Tepat Guna', 'deskripsi' => 'Menghadirkan solusi digital sesuai kebutuhan.', 'status' => 'aktif'),
-			array('tipe' => 'misi', 'judul' => 'Pendampingan Profesional', 'deskripsi' => 'Memberikan arahan, pengembangan, dan pemeliharaan.', 'status' => 'aktif'),
-		);
+		return $this->get_all('visi_misi', 'urutan', 'ASC');
 	}
 
 	public function get_sejarah()
 	{
-		return array(
-			array('tahun' => 'Awal Berdiri', 'judul' => 'Piramidsoft Mulai Dibangun', 'status' => 'aktif'),
-			array('tahun' => 'Pengembangan Layanan', 'judul' => 'Fokus pada Solusi Digital', 'status' => 'aktif'),
-			array('tahun' => 'Saat Ini', 'judul' => 'Mitra Teknologi Bisnis', 'status' => 'aktif'),
-		);
+		return $this->get_all('sejarah', 'urutan', 'ASC');
 	}
 
 	public function get_team()
 	{
-		return array(
-			array('nama' => 'Nama Tim', 'jabatan' => 'Founder / Director', 'status' => 'aktif'),
-			array('nama' => 'Nama Tim', 'jabatan' => 'Project Manager', 'status' => 'aktif'),
-			array('nama' => 'Nama Tim', 'jabatan' => 'Developer', 'status' => 'aktif'),
-		);
+		return $this->get_all('team', 'urutan', 'ASC');
+	}
+
+	public function get_admin()
+	{
+		return $this->get_all('admin', 'id_admin', 'DESC');
 	}
 }

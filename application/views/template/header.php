@@ -63,6 +63,101 @@
 		.pyramid-meta-list strong {
 			color: #0e1f35;
 		}
+
+		.pyramid-hero-collage {
+			position: relative;
+			min-height: 760px;
+			background: #0d1424;
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+			padding-top: 130px;
+			padding-bottom: 70px;
+		}
+
+		.pyramid-hero-collage::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(90deg, rgba(13, 20, 36, .95) 0%, rgba(13, 20, 36, .78) 42%, rgba(13, 20, 36, .28) 100%);
+			z-index: 1;
+		}
+
+		.pyramid-hero-content {
+			position: relative;
+			z-index: 2;
+			max-width: 670px;
+			padding-top: 60px;
+		}
+
+		.pyramid-hero-content h4 {
+			color: #fff;
+			font-weight: 700;
+			margin-bottom: 18px;
+		}
+
+		.pyramid-hero-content h1 {
+			color: #fff;
+			font-size: 74px;
+			line-height: 82px;
+			font-weight: 800;
+			margin-bottom: 26px;
+		}
+
+		.pyramid-hero-content p {
+			color: #d9deea;
+			font-size: 18px;
+			line-height: 30px;
+			margin-bottom: 34px;
+		}
+
+		.pyramid-collage-grid {
+			position: absolute;
+			top: 115px;
+			right: 0;
+			width: 58%;
+			height: calc(100% - 115px);
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			grid-auto-rows: 150px;
+			gap: 8px;
+			transform: rotate(-3deg) scale(1.08);
+			z-index: 0;
+		}
+
+		.pyramid-collage-grid img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: 6px;
+			filter: saturate(1.05);
+		}
+
+		.pyramid-collage-grid .wide {
+			grid-column: span 2;
+		}
+
+		.pyramid-collage-grid .tall {
+			grid-row: span 2;
+		}
+
+		@media (max-width: 991px) {
+			.pyramid-hero-collage {
+				min-height: 680px;
+				padding-top: 120px;
+			}
+
+			.pyramid-hero-content h1 {
+				font-size: 46px;
+				line-height: 56px;
+			}
+
+			.pyramid-collage-grid {
+				width: 100%;
+				opacity: .35;
+				grid-auto-rows: 120px;
+			}
+		}
 	</style>
 	
 </head>

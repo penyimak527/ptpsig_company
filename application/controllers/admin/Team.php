@@ -1,43 +1,43 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once APPPATH . 'controllers/admin/Admin_base.php';
 
-class Team extends CI_Controller
+class Team extends Admin_base
 {
-	public function __construct()
-	{
-		parent::__construct();
-		$this->load->helper('url');
-		$this->load->model('M_admin', 'admin');
-	}
+	protected $crud = array(
+		'table' => 'team',
+		'primary_key' => 'id_team',
+		'order_by' => 'urutan',
+		'order_dir' => 'ASC',
+		'fields' => array('nama', 'jabatan', 'foto', 'bio', 'instagram', 'linkedin', 'urutan', 'status'),
+		'file_field' => 'foto',
+		'upload_path' => 'upload/team',
+		'status_options' => array('aktif', 'nonaktif'),
+		'columns' => array('nama' => 'Nama', 'jabatan' => 'Jabatan', 'urutan' => 'Urutan', 'status' => 'Status'),
+	);
 
 	public function index()
 	{
-		$data = $this->prepare_data('Admin Team', 'team');
-		$data['rows'] = $this->admin->get_team();
-		$data['columns'] = array('Nama', 'Jabatan', 'Status');
-		$data['fields'] = array('nama', 'jabatan', 'status');
-		$data['page_label'] = 'Team';
-		$data['page_description'] = 'Kelola data tim yang tampil di website.';
-		$this->render('admin/team/index', $data);
+		$this->render_crud('admin/team/index', 'Admin Team', 'team', 'Team', 'Kelola data tim yang tampil di website.');
 	}
 
-	private function prepare_data($title, $active_menu)
+	public function list_data()
 	{
-		$base_path = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/');
-
-		return array(
-			'title' => $title,
-			'active_menu' => $active_menu,
-			'admin_asset_path' => ($base_path === '' ? '' : $base_path) . '/asstes_admin',
-		);
+		$this->ajax_list_response();
 	}
 
-	private function render($view, $data)
+	public function get($id)
 	{
-		$this->load->view('admin/template/header', $data);
-		$this->load->view('admin/template/sidebar', $data);
-		$this->load->view('admin/template/topbar', $data);
-		$this->load->view($view, $data);
-		$this->load->view('admin/template/footer', $data);
+		$this->ajax_get_response($id);
+	}
+
+	public function save()
+	{
+		$this->ajax_save_response();
+	}
+
+	public function delete($id)
+	{
+		$this->ajax_delete_response($id);
 	}
 }

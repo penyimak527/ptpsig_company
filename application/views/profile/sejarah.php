@@ -1,4 +1,12 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<?php
+if (!function_exists('pyramid_public_image_url')) {
+	function pyramid_public_image_url($path, $asset_path, $base_path)
+	{
+		return strpos($path, 'upload/') === 0 ? $base_path . '/' . $path : $asset_path . '/' . $path;
+	}
+}
+?>
 <section class="breadcrumb-area">
 	<div class="container">
 		<div class="row">

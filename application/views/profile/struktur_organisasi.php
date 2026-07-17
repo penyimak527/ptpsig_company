@@ -1,4 +1,12 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<?php
+if (!function_exists('pyramid_public_image_url')) {
+	function pyramid_public_image_url($path, $asset_path, $base_path)
+	{
+		return strpos($path, 'upload/') === 0 ? $base_path . '/' . $path : $asset_path . '/' . $path;
+	}
+}
+?>
 <section class="breadcrumb-area">
 	<div class="container">
 		<div class="row">
@@ -37,10 +45,10 @@
 				<div class="col-lg-3 col-md-6">
 					<div class="single-infetech-feature-item animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="<?php echo $index * 200; ?>ms">
 						<div class="icon">
-							<img src="<?php echo $asset_path; ?>/images/icon/service-icon-<?php echo ($index % 3) + 1; ?>.png" alt="<?php echo $item['division']; ?>">
+							<img src="<?php echo pyramid_public_image_url($item['image'], $asset_path, $base_path); ?>" alt="<?php echo $item['position']; ?>">
 						</div>
 						<div class="content">
-							<h4 class="title"><a href="#"><?php echo $item['name']; ?></a></h4>
+							<h4 class="title"><a href="#"><?php echo $item['position']; ?></a></h4>
 							<span><?php echo $item['division']; ?></span>
 							<p><?php echo $item['description']; ?></p>
 						</div>

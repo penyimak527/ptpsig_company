@@ -1,44 +1,24 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
-<section id="beranda" class="infetech-banner-area infetech-banner-slide">
-	<div class="infetech-banner-slide-active item-1">
-		<div class="item-1"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="infetech-banner-content">
-						<h4 class="title" data-animation="fadeInDown" data-delay=".1s">Company Profile <?php echo $company['name']; ?></h4>
-						<h1 class="" data-animation="fadeInLeft" data-delay=".3s">IT Solutions <img src="<?php echo $asset_path; ?>/images/banner-icon.png" alt=""> <br> Services</h1>
-						<a class="main-btn" data-animation="fadeInUp" data-delay=".6s" href="#tentang">Kenali Kami</a>
-						<img class="banner-arrow" data-animation="fadeInRight" data-delay=".9s" src="<?php echo $asset_path; ?>/images/banner-arrow.png" alt="">
-					</div>
-				</div>
-			</div>
-		</div>
+<?php
+function pyramid_image_url($path, $asset_path, $base_path)
+{
+	return strpos($path, 'upload/') === 0 ? $base_path . '/' . $path : $asset_path . '/' . $path;
+}
+?>
+<section id="beranda" class="pyramid-hero-collage">
+	<div class="pyramid-collage-grid">
+		<?php foreach ($hero_images as $index => $image) : ?>
+			<img class="<?php echo $index % 5 === 0 ? 'wide' : ($index % 4 === 0 ? 'tall' : ''); ?>" src="<?php echo pyramid_image_url($image, $asset_path, $base_path); ?>" alt="Aktivitas Piramidsoft">
+		<?php endforeach; ?>
 	</div>
-	<div class="infetech-banner-slide-active item-2">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="infetech-banner-content">
-						<h4 class="title" data-animation="fadeInDown" data-delay=".1s">Website, Aplikasi, dan Sistem Digital</h4>
-						<h1 class="" data-animation="fadeInLeft" data-delay=".3s">Digital <img src="<?php echo $asset_path; ?>/images/banner-icon.png" alt=""> <br> Solutions</h1>
-						<a class="main-btn" data-animation="fadeInUp" data-delay=".6s" href="#layanan">Lihat Layanan</a>
-						<img class="banner-arrow" data-animation="fadeInRight" data-delay=".9s" src="<?php echo $asset_path; ?>/images/banner-arrow.png" alt="">
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="infetech-banner-slide-active item-3">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="infetech-banner-content">
-						<h4 class="title" data-animation="fadeInDown" data-delay=".1s">Tim, Legalitas, Lokasi, dan Partner</h4>
-						<h1 class="" data-animation="fadeInLeft" data-delay=".3s">Trusted <img src="<?php echo $asset_path; ?>/images/banner-icon.png" alt=""> <br> Company</h1>
-						<a class="main-btn" data-animation="fadeInUp" data-delay=".6s" href="#legalitas">Lihat Profil</a>
-						<img class="banner-arrow" data-animation="fadeInRight" data-delay=".9s" src="<?php echo $asset_path; ?>/images/banner-arrow.png" alt="">
-					</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="pyramid-hero-content">
+					<h4>Company Profile <?php echo $company['name']; ?></h4>
+					<h1>Partner Digital untuk Bisnis yang Tumbuh</h1>
+					<p><?php echo $company['legal_name']; ?> memperkenalkan tim, layanan, legalitas, lokasi, struktur organisasi, visi misi, dan kegiatan perusahaan secara profesional.</p>
+					<a class="main-btn" href="#tentang">Kenali Kami</a>
 				</div>
 			</div>
 		</div>
@@ -113,7 +93,7 @@
 				<div class="col-lg-3 col-md-6">
 					<div class="single-infetech-serice-item animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="<?php echo $index * 300; ?>ms">
 						<div class="thumb">
-							<img src="<?php echo $asset_path; ?>/<?php echo $service['image']; ?>" alt="<?php echo $service['title']; ?>">
+							<img src="<?php echo pyramid_image_url($service['image'], $asset_path, $base_path); ?>" alt="<?php echo $service['title']; ?>">
 						</div>
 						<div class="content">
 							<div class="icon">
@@ -122,6 +102,43 @@
 							<h3 class="title"><a href="<?php echo $company['service_url']; ?>"><?php echo $service['title']; ?></a></h3>
 							<p class="pyramid-card-text"><?php echo $service['description']; ?></p>
 							<a class="pyramid-small-btn" href="<?php echo $company['service_url']; ?>">Selengkapnya</a>
+						</div>
+					</div>
+				</div>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</section>
+
+<section class="infetech-feature-area pyramid-section-compact">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-6">
+				<div class="section-title section-title-2">
+					<span>Teknologi</span>
+					<h4 class="title">Membangun masa depan dengan teknologi terkini.</h4>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="section-title pl-100">
+					<p>Pyramid menggunakan teknologi web, mobile, cloud, dan payment integration untuk memastikan solusi berjalan cepat, aman, dan mudah dikembangkan.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<?php foreach ($tech_groups as $tech) : ?>
+				<div class="col-lg-3 col-md-6">
+					<div class="single-infetech-feature-item">
+						<div class="content">
+							<h4 class="title"><a href="#"><?php echo $tech['title']; ?></a></h4>
+							<p><?php echo $tech['description']; ?></p>
+							<div class="row g-2">
+								<?php for ($i = 1; $i <= min($tech['total'], 4); $i++) : ?>
+									<div class="col-3">
+										<img src="<?php echo $asset_path; ?>/img_pyramid/<?php echo $tech['folder']; ?>/<?php echo $i; ?>.png" alt="<?php echo $tech['title']; ?>" style="max-width: 42px;">
+									</div>
+								<?php endfor; ?>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -143,12 +160,12 @@
 						</div>
 						<div class="col-lg-9">
 							<div class="cta-content">
-								<h2 class="title">Legalitas, lokasi, dan kontak resmi Piramidsoft</h2>
+								<h2 class="title">Legalitas, lokasi, dan kontak resmi <?php echo $company['name']; ?></h2>
 								<div class="row align-items-center">
 									<div class="col-lg-8">
 										<ul>
-											<li><i class="fas fa-check-circle"></i> Nama legal perusahaan: menunggu data resmi.</li>
-											<li><i class="fas fa-check-circle"></i> NIB/AHU/NPWP: menunggu data yang boleh dipublikasikan.</li>
+											<li><i class="fas fa-check-circle"></i> Nama legal perusahaan: <?php echo $company['legal_name']; ?>.</li>
+											<li><i class="fas fa-check-circle"></i> Tahun berdiri: <?php echo $company['established']; ?>.</li>
 											<li><i class="fas fa-check-circle"></i> Lokasi kantor: <?php echo $company['address']; ?>.</li>
 										</ul>
 									</div>
@@ -183,22 +200,13 @@
 	</div>
 	<div class="container-fluid pl-160 pr-160">
 		<div class="row infetech-project-slide">
-			<?php
-			$structures = array(
-				array('image' => 'project-1.jpg', 'title' => 'Leadership', 'label' => 'DIREKTUR / FOUNDER'),
-				array('image' => 'project-2.jpg', 'title' => 'Management', 'label' => 'PROJECT / OPERATION'),
-				array('image' => 'project-3.jpg', 'title' => 'Development', 'label' => 'WEB / MOBILE / SYSTEM'),
-				array('image' => 'project-4.jpg', 'title' => 'Support', 'label' => 'MAINTENANCE / QA'),
-				array('image' => 'project-2.jpg', 'title' => 'Brand Partner', 'label' => 'CLIENT / PARTNER'),
-			);
-			foreach ($structures as $structure) :
-			?>
+			<?php foreach ($struktur_organisasi as $structure) : ?>
 				<div class="col-lg-3">
 					<div class="single-project-item">
-						<img src="<?php echo $asset_path; ?>/images/<?php echo $structure['image']; ?>" alt="">
+						<img src="<?php echo pyramid_image_url($structure['image'], $asset_path, $base_path); ?>" alt="<?php echo $structure['position']; ?>">
 						<div class="single-project-overlay">
-							<h4 class="title"><?php echo $structure['title']; ?></h4>
-							<span><?php echo $structure['label']; ?></span>
+							<h4 class="title"><?php echo $structure['position']; ?></h4>
+							<span><?php echo $structure['division']; ?></span>
 							<a href="#tim"><i class="fal fa-long-arrow-right"></i></a>
 						</div>
 					</div>
@@ -314,7 +322,7 @@
 					<div class="single-tema-item animated wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="<?php echo $index * 300; ?>ms">
 						<div class="top-line"></div>
 						<div class="thumb">
-							<img src="<?php echo $asset_path; ?>/images/<?php echo $team['image']; ?>" alt="">
+							<img src="<?php echo pyramid_image_url($team['image'], $asset_path, $base_path); ?>" alt="<?php echo $team['name']; ?>">
 						</div>
 						<div class="content">
 							<h4 class="title"><?php echo $team['name']; ?></h4>
@@ -351,7 +359,7 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="single-blog-item animated wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="<?php echo $index * 300; ?>ms">
 						<div class="thumb">
-							<a href="<?php echo site_url('home/detail_kegiatan/' . $activity['slug']); ?>"><img src="<?php echo $asset_path; ?>/<?php echo $activity['image']; ?>" alt="<?php echo $activity['title']; ?>"></a>
+							<a href="<?php echo site_url('home/detail_kegiatan/' . $activity['slug']); ?>"><img src="<?php echo pyramid_image_url($activity['image'], $asset_path, $base_path); ?>" alt="<?php echo $activity['title']; ?>"></a>
 							<span><?php echo $activity['category']; ?></span>
 						</div>
 						<div class="content">
