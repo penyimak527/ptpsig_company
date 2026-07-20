@@ -66,6 +66,12 @@ class Admin_base extends CI_Controller
 	{
 		$id = $this->input->post($this->crud['primary_key']);
 		$data = array();
+		$old_row = array();
+		$new_upload_path = NULL;
+
+		if (!empty($id)) {
+			$old_row = $this->admin->get_where($this->crud['table'], array($this->crud['primary_key'] => $id));
+		}
 
 		foreach ($this->crud['fields'] as $field) {
 			if ($this->input->post($field) !== NULL) {
@@ -105,14 +111,30 @@ class Admin_base extends CI_Controller
 
 			$upload = $this->upload->data();
 			$data[$this->crud['file_field']] = $this->crud['upload_path'] . '/' . $upload['file_name'];
+			$new_upload_path = $data[$this->crud['file_field']];
 		}
 
 		if (empty($id)) {
 			$data['created_at'] = date('Y-m-d H:i:s');
 			$saved_id = $this->admin->insert($this->crud['table'], $data);
+			if (empty($saved_id) && $new_upload_path !== NULL) {
+				$this->delete_upload_file($new_upload_path);
+				$this->json(array('status' => FALSE, 'message' => 'Data gagal disimpan.'));
+				return;
+			}
 		} else {
 			$data['updated_at'] = date('Y-m-d H:i:s');
-			$this->admin->update($this->crud['table'], $this->crud['primary_key'], $id, $data);
+			$updated = $this->admin->update($this->crud['table'], $this->crud['primary_key'], $id, $data);
+			if (!$updated) {
+				if ($new_upload_path !== NULL) {
+					$this->delete_upload_file($new_upload_path);
+				}
+				$this->json(array('status' => FALSE, 'message' => 'Data gagal diperbarui.'));
+				return;
+			}
+			if ($new_upload_path !== NULL && !empty($old_row[$this->crud['file_field']])) {
+				$this->delete_upload_file($old_row[$this->crud['file_field']]);
+			}
 			$saved_id = $id;
 		}
 
@@ -121,8 +143,25 @@ class Admin_base extends CI_Controller
 
 	protected function ajax_delete_response($id)
 	{
-		$this->admin->delete($this->crud['table'], $this->crud['primary_key'], $id);
-		$this->json(array('status' => TRUE));
+		$row = $this->admin->get_where($this->crud['table'], array($this->crud['primary_key'] => $id));
+		$deleted = $this->admin->delete($this->crud['table'], $this->crud['primary_key'], $id);
+		if ($deleted && !empty($this->crud['file_field']) && !empty($row[$this->crud['file_field']])) {
+			$this->delete_upload_file($row[$this->crud['file_field']]);
+		}
+		$this->json(array('status' => $deleted));
+	}
+
+	protected function delete_upload_file($relative_path)
+	{
+		$relative_path = str_replace('\\', '/', $relative_path);
+		if (strpos($relative_path, 'upload/') !== 0) {
+			return;
+		}
+
+		$file_path = FCPATH . $relative_path;
+		if (is_file($file_path)) {
+			unlink($file_path);
+		}
 	}
 
 	protected function json($data)

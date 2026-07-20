@@ -41,6 +41,13 @@ if (!function_exists('pyramid_public_image_url')) {
 			</div>
 		</div>
 		<div class="row justify-content-center">
+			<?php if (empty($struktur_organisasi)) : ?>
+				<div class="col-lg-8">
+					<div class="pyramid-meta-list text-center">
+						<p>Data struktur organisasi belum tersedia. Silakan tambahkan melalui halaman admin.</p>
+					</div>
+				</div>
+			<?php endif; ?>
 			<?php foreach ($struktur_organisasi as $index => $item) : ?>
 				<div class="col-lg-3 col-md-6">
 					<div class="single-infetech-feature-item animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="<?php echo $index * 200; ?>ms">

@@ -5,19 +5,17 @@
 				<div class="col-lg-3 col-md-6">
 					<div class="footer-about">
 						<!-- <a href="#beranda"><img src="<?php echo $asset_path; ?>/images/logo-white.png" alt="<?php echo $company['name']; ?>"></a> -->
-						<a href="<?php echo site_url(); ?>#beranda"><img src="<?php echo $asset_path; ?>/img_pyramid/logo/logo_pyramid_putih.png" alt="<?php echo $company['name']; ?>" style="width: 90px;"></a>
+						<a href="<?php echo site_url(); ?>#beranda"><img src="<?php echo $asset_path; ?>/img_pyramid/logo/logo_pyramid_putih.png" alt="<?php echo $company['name']; ?>" width="100"></a>
 						<p>Company profile Piramidsoft untuk memperkenalkan profil perusahaan, legalitas, lokasi, tim, struktur organisasi, visi-misi, layanan, dan brand partner.</p>
 						<ul>
-							<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-							<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+							<li><a href="mailto:<?php echo $company['email']; ?>"><i class="fas fa-envelope"></i></a></li>
+							<li><a href="https://wa.me/<?php echo preg_replace('/[^0-9]/', '', $company['phone']); ?>" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-lg-2 col-md-6">
 					<div class="footer-nav">
-						<h4 class="title">Links</h4>
+						<h4 class="title">Menu Cepat</h4>
 						<ul>
 							<?php foreach ($menus as $menu) : ?>
 								<li><a href="<?php echo $menu['url']; ?>"><?php echo $menu['label']; ?></a></li>
@@ -34,17 +32,12 @@
 					<div class="footer-newsletter">
 						<h4 class="title">Layanan</h4>
 						<p>Piramidsoft melayani website, aplikasi custom, integrasi sistem, dan maintenance.</p>
-						<form action="#">
-							<div class="input-box">
-								<input type="text" placeholder="<?php echo $company['email']; ?>">
-								<button><i class="far fa-paper-plane"></i></button>
-							</div>
-						</form>
+						<a class="main-btn" href="<?php echo $company['service_url']; ?>" target="_blank" rel="noopener noreferrer">Lihat Layanan Lengkap</a>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<div class="footer-info">
-						<h4 class="title">Contact</h4>
+						<h4 class="title">Kontak</h4>
 						<ul>
 							<li><i class="fas fa-phone"></i><span><?php echo $company['phone']; ?></span></li>
 							<li><i class="fas fa-envelope"></i><span><?php echo $company['email']; ?></span></li>

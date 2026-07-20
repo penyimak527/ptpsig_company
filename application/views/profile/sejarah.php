@@ -45,6 +45,9 @@ if (!function_exists('pyramid_public_image_url')) {
 					<h3 class="title">Perjalanan Piramidsoft sebagai partner digital.</h3>
 					<p>Informasi tahun berdiri dan riwayat resmi akan disesuaikan setelah data final tersedia. Sementara ini halaman sejarah menampilkan alur pengenalan perusahaan secara umum.</p>
 					<ul>
+						<?php if (empty($sejarah)) : ?>
+							<li><i class="fas fa-check-circle"></i> Data sejarah belum tersedia. Silakan tambahkan melalui halaman admin.</li>
+						<?php endif; ?>
 						<?php foreach ($sejarah as $item) : ?>
 							<li><i class="fas fa-check-circle"></i> <strong><?php echo $item['year']; ?>:</strong> <?php echo $item['title']; ?> - <?php echo $item['description']; ?></li>
 						<?php endforeach; ?>

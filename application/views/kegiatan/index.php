@@ -7,55 +7,46 @@ if (!function_exists('pyramid_public_image_url')) {
 	}
 }
 ?>
-<section class="breadcrumb-area">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="breadcrumb-item text-center">
-					<h2 class="title">Kegiatan</h2>
-					<nav aria-label="breadcrumb">
-						<ol class="breadcrumb justify-content-center">
-							<li class="breadcrumb-item"><a href="<?php echo site_url(); ?>">Beranda</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Kegiatan</li>
-						</ol>
-					</nav>
-				</div>
-			</div>
+<section class="pyramid-portfolio-hero">
+	<div class="container pyramid-portfolio-hero-wrap">
+		<div class="pyramid-portfolio-hero-copy">
+			<span class="pyramid-eyebrow">Kegiatan Piramidsoft</span>
+			<h1>Kegiatan dan kolaborasi yang menjadi <strong>bukti kerja nyata.</strong></h1>
+			<p>Piramidsoft membangun hubungan kerja melalui diskusi, pendampingan, pengembangan sistem, dan pelayanan teknologi yang terarah.</p>
+			<a class="main-btn" href="#daftar-kegiatan">Lihat Semua Kegiatan</a>
+		</div>
+		<div class="pyramid-portfolio-visual">
+			<img src="<?php echo $asset_path; ?>/img_pyramid/ASSET WEB PROFILE/FOTO TIM/makan-w-tim.jpg" alt="Tim Piramidsoft">
+			<span class="pyramid-float-label pyramid-float-label-one">Kolaborasi Aktif</span>
+			<span class="pyramid-float-label pyramid-float-label-two">Pendampingan Responsif</span>
 		</div>
 	</div>
 </section>
 
-<section class="infetech-blog-area infetech-blog-page-area pyramid-section-compact">
+<section id="daftar-kegiatan" class="pyramid-portfolio-section">
 	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-8">
-				<div class="section-title text-center mb-55">
-					<span>Kegiatan Kami</span>
-					<h4 class="title">Aktivitas Piramidsoft bersama klien dan partner.</h4>
-				</div>
-			</div>
+		<div class="pyramid-portfolio-heading">
+			<span>Dokumentasi Kegiatan</span>
+			<h3>Perjalanan Piramidsoft bersama klien dan partner.</h3>
 		</div>
-		<div class="row">
-			<?php foreach ($activities as $index => $activity) : ?>
-				<div class="col-lg-4 col-md-6">
-					<div class="single-blog-item animated wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="<?php echo $index * 200; ?>ms">
-						<div class="thumb">
-							<a href="<?php echo site_url('home/detail_kegiatan/' . $activity['slug']); ?>"><img src="<?php echo pyramid_public_image_url($activity['image'], $asset_path, $base_path); ?>" alt="<?php echo $activity['title']; ?>"></a>
-							<span><?php echo $activity['category']; ?></span>
-						</div>
-						<div class="content">
-							<div class="blog-meta">
-								<ul>
-									<li><i class="fal fa-user-circle"></i> <?php echo $activity['client']; ?></li>
-									<li><i class="fal fa-calendar-alt"></i> <?php echo date('d M Y', strtotime($activity['date'])); ?></li>
-								</ul>
-								<h4 class="title"><a href="<?php echo site_url('home/detail_kegiatan/' . $activity['slug']); ?>"><?php echo $activity['title']; ?></a></h4>
-								<p class="pyramid-card-text"><?php echo $activity['excerpt']; ?></p>
-								<a href="<?php echo site_url('home/detail_kegiatan/' . $activity['slug']); ?>">Selengkapnya</a>
-							</div>
-						</div>
-					</div>
+		<div class="pyramid-portfolio-grid">
+			<?php if (empty($activities)) : ?>
+				<div class="pyramid-empty-state">
+					<p>Belum ada kegiatan yang dipublikasikan.</p>
 				</div>
+			<?php endif; ?>
+			<?php foreach ($activities as $activity) : ?>
+				<article class="pyramid-portfolio-card animated wow fadeInUp" data-wow-duration="1200ms">
+					<a class="pyramid-portfolio-cover" href="<?php echo site_url('kegiatan/detail/' . $activity['slug']); ?>" aria-label="Lihat detail <?php echo htmlspecialchars($activity['title'], ENT_QUOTES, 'UTF-8'); ?>">
+						<img src="<?php echo pyramid_public_image_url($activity['image'], $asset_path, $base_path); ?>" alt="<?php echo htmlspecialchars($activity['title'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy">
+					</a>
+					<div class="pyramid-portfolio-body">
+						<span class="pyramid-portfolio-category"><?php echo htmlspecialchars($activity['category'], ENT_QUOTES, 'UTF-8'); ?></span>
+						<h3><a href="<?php echo site_url('kegiatan/detail/' . $activity['slug']); ?>"><?php echo htmlspecialchars($activity['title'], ENT_QUOTES, 'UTF-8'); ?></a></h3>
+						<p><?php echo htmlspecialchars($activity['client'], ENT_QUOTES, 'UTF-8'); ?> - <?php echo date('Y', strtotime($activity['date'])); ?></p>
+						<a class="pyramid-portfolio-link" href="<?php echo site_url('kegiatan/detail/' . $activity['slug']); ?>">Selengkapnya <span aria-hidden="true">&rarr;</span></a>
+					</div>
+				</article>
 			<?php endforeach; ?>
 		</div>
 	</div>

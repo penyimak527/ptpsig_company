@@ -17,7 +17,7 @@
 	</div>
 </section>
 
-<section class="infetech-service-area pyramid-section-compact">
+<section class="pyramid-direction-section">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-lg-8">
@@ -27,37 +27,30 @@
 				</div>
 			</div>
 		</div>
-		<div class="row justify-content-center">
-			<div class="col-lg-6">
-				<div class="single-infetech-serice-item">
-					<div class="thumb">
-						<img src="<?php echo $asset_path; ?>/images/service-1.jpg" alt="<?php echo $visi_misi['visi']['title']; ?>">
-					</div>
-					<div class="content">
-						<div class="icon">
-							<img src="<?php echo $asset_path; ?>/images/icon/service-icon-1.png" alt="">
-						</div>
-						<h3 class="title"><a href="#"><?php echo $visi_misi['visi']['title']; ?></a></h3>
-						<p class="pyramid-card-text"><?php echo $visi_misi['visi']['description']; ?></p>
-					</div>
-				</div>
-			</div>
-			<?php foreach ($visi_misi['misi'] as $index => $mission) : ?>
-				<div class="col-lg-6 col-md-6">
-					<div class="single-infetech-serice-item">
-						<div class="thumb">
-							<img src="<?php echo $asset_path; ?>/images/service-<?php echo ($index % 3) + 1; ?>.jpg" alt="<?php echo $mission['title']; ?>">
-						</div>
-						<div class="content">
-							<div class="icon">
-								<img src="<?php echo $asset_path; ?>/images/icon/service-icon-<?php echo ($index % 3) + 1; ?>.png" alt="">
-							</div>
-							<h3 class="title"><a href="#"><?php echo $mission['title']; ?></a></h3>
-							<p class="pyramid-card-text"><?php echo $mission['description']; ?></p>
-						</div>
-					</div>
-				</div>
-			<?php endforeach; ?>
+		<div class="pyramid-direction-grid">
+			<article class="pyramid-direction-card pyramid-direction-vision">
+				<div class="pyramid-direction-number">01</div>
+				<span>Arah Perusahaan</span>
+				<h3><?php echo htmlspecialchars($visi_misi['visi']['title'], ENT_QUOTES, 'UTF-8'); ?></h3>
+				<p><?php echo htmlspecialchars($visi_misi['visi']['description'], ENT_QUOTES, 'UTF-8'); ?></p>
+			</article>
+			<article class="pyramid-direction-card pyramid-direction-mission">
+				<div class="pyramid-direction-number">02</div>
+				<span>Komitmen Perusahaan</span>
+				<h3>Misi</h3>
+				<?php if (!empty($visi_misi['misi'])) : ?>
+					<ol class="pyramid-mission-list">
+						<?php foreach ($visi_misi['misi'] as $mission) : ?>
+							<li>
+								<strong><?php echo htmlspecialchars($mission['title'], ENT_QUOTES, 'UTF-8'); ?></strong>
+								<p><?php echo htmlspecialchars($mission['description'], ENT_QUOTES, 'UTF-8'); ?></p>
+							</li>
+						<?php endforeach; ?>
+					</ol>
+				<?php else : ?>
+					<p>Data misi belum tersedia. Silakan tambahkan melalui halaman admin.</p>
+				<?php endif; ?>
+			</article>
 		</div>
 	</div>
 </section>

@@ -21,6 +21,8 @@ class M_home extends CI_Model
 			'company' => $this->get_company_data(),
 			'menus' => $this->get_menus(),
 			'services' => $this->get_services(),
+			'advantages' => $this->get_advantages(),
+			'highlights' => $this->get_highlights(),
 			'teams' => $this->get_team_data(),
 			'brands' => $this->get_brand_data(),
 			'visi_misi' => $this->get_visi_misi_data(),
@@ -63,15 +65,15 @@ class M_home extends CI_Model
 			array('label' => 'Beranda', 'path' => '', 'anchor' => '#beranda'),
 			array(
 				'label' => 'Profile',
-				'path' => 'home/struktur_organisasi',
+				'path' => 'profil/sejarah',
 				'children' => array(
-					array('label' => 'Struktur Organisasi', 'path' => 'home/struktur_organisasi'),
-					array('label' => 'Visi Misi', 'path' => 'home/visi_misi'),
-					array('label' => 'Sejarah', 'path' => 'home/sejarah'),
+					array('label' => 'Sejarah', 'path' => 'profil/sejarah'),
+					array('label' => 'Visi dan Misi', 'path' => 'profil/visi_misi'),
+					array('label' => 'Struktur Organisasi', 'path' => 'profil/struktur_organisasi'),
 				),
 			),
-			array('label' => 'Kegiatan', 'path' => 'home/kegiatan'),
-			array('label' => 'Kontak', 'path' => '', 'anchor' => '#kontak'),
+			array('label' => 'Tim', 'path' => 'profil/tim'),
+			array('label' => 'Kegiatan', 'path' => 'kegiatan'),
 		);
 	}
 
@@ -114,19 +116,20 @@ class M_home extends CI_Model
 			->result_array();
 
 		if (empty($rows)) {
-			return array(
-				array('name' => 'Nama Tim', 'position' => 'Founder / Director', 'image' => 'images/team-1.jpg', 'bio' => 'Profil tim akan disesuaikan.'),
-				array('name' => 'Nama Tim', 'position' => 'Project Manager', 'image' => 'images/team-2.jpg', 'bio' => 'Profil tim akan disesuaikan.'),
-				array('name' => 'Nama Tim', 'position' => 'Developer', 'image' => 'images/team-3.jpg', 'bio' => 'Profil tim akan disesuaikan.'),
-			);
+			return array();
 		}
 
 		$data = array();
-		foreach ($rows as $row) {
+		$fallbacks = array(
+			'img_pyramid/ASSET WEB PROFILE/FOTO TIM/activity-kantor-13.jpg',
+			'img_pyramid/ASSET WEB PROFILE/FOTO TIM/activity-kantor-14.jpg',
+			'img_pyramid/ASSET WEB PROFILE/FOTO TIM/makan-w-tim-2.jpg',
+		);
+		foreach ($rows as $index => $row) {
 			$data[] = array(
 				'name' => $row['nama'],
 				'position' => $row['jabatan'],
-				'image' => $this->fallback_upload($row['foto'], 'images/team-1.jpg'),
+				'image' => $this->fallback_upload($row['foto'], $fallbacks[$index % count($fallbacks)]),
 				'bio' => $row['bio'],
 				'instagram' => $row['instagram'],
 				'linkedin' => $row['linkedin'],
@@ -134,6 +137,27 @@ class M_home extends CI_Model
 		}
 
 		return $data;
+	}
+
+	private function get_advantages()
+	{
+		return array(
+			array('title' => 'Pendekatan Strategis', 'description' => 'Setiap solusi dimulai dari pemahaman kebutuhan bisnis dan tujuan pengguna.'),
+			array('title' => 'Solusi Kustom', 'description' => 'Pengembangan dibuat menyesuaikan proses, skala, dan karakter operasional klien.'),
+			array('title' => 'Pengalaman Pengguna', 'description' => 'Antarmuka dirancang agar mudah digunakan dan mendukung produktivitas.'),
+			array('title' => 'Dukungan Berkelanjutan', 'description' => 'Tim membantu perawatan, peningkatan, dan pengembangan sistem jangka panjang.'),
+		);
+	}
+
+	private function get_highlights()
+	{
+		return array(
+			array('label' => 'Tahun berdiri', 'value' => $this->get_company_data()['established']),
+			array('label' => 'Proyek', 'value' => 'Mengikuti data resmi'),
+			array('label' => 'Pelanggan', 'value' => 'Mengikuti data resmi'),
+			array('label' => 'Wilayah layanan', 'value' => 'Nasional'),
+			array('label' => 'Tim', 'value' => $this->db->where('status', 'aktif')->count_all_results('team') . ' aktif'),
+		);
 	}
 
 	private function get_brand_data()
@@ -183,12 +207,17 @@ class M_home extends CI_Model
 			->result_array();
 		$data = array();
 
-		foreach ($rows as $row) {
+		$fallbacks = array(
+			'img_pyramid/ASSET WEB PROFILE/FOTO TIM/activity-kantor-13.jpg',
+			'img_pyramid/ASSET WEB PROFILE/FOTO TIM/activity-kantor-14.jpg',
+			'img_pyramid/ASSET WEB PROFILE/FOTO TIM/makan-w-tim.jpg',
+		);
+		foreach ($rows as $index => $row) {
 			$data[] = array(
 				'name' => $row['nama'],
 				'position' => $row['jabatan'],
 				'division' => $row['divisi'],
-				'image' => $this->fallback_upload($row['foto'], 'images/team-1.jpg'),
+				'image' => $this->fallback_upload($row['foto'], $fallbacks[$index % count($fallbacks)]),
 				'description' => $row['deskripsi'],
 			);
 		}
@@ -209,7 +238,7 @@ class M_home extends CI_Model
 			$data[] = array(
 				'year' => $row['tahun'],
 				'title' => $row['judul'],
-				'image' => $this->fallback_upload($row['gambar'], 'images/about-thumb-1.jpg'),
+				'image' => $this->fallback_upload($row['gambar'], 'img_pyramid/ASSET WEB PROFILE/FOTO TIM/activity-kantor-13.jpg'),
 				'description' => $row['deskripsi'],
 			);
 		}
@@ -241,7 +270,7 @@ class M_home extends CI_Model
 			'client' => $row['klien'],
 			'category' => $row['kategori'],
 			'date' => $row['tanggal'],
-			'image' => $this->fallback_upload($row['gambar'], 'images/blog-1.jpg'),
+			'image' => $this->fallback_upload($row['gambar'], 'img_pyramid/ASSET WEB PROFILE/BERSAMA MEREKA/diskusi-session-with-client.PNG'),
 			'excerpt' => $row['ringkasan'],
 			'description' => $row['deskripsi'],
 		);
