@@ -11,7 +11,7 @@
 	<div class="card shadow mb-4">
 		<div class="card-header py-3"><h6 class="m-0 font-weight-bold text-primary">Data Kegiatan</h6></div>
 		<div class="card-body">
-			<div class="row"><div class="col-md-4"><div class="input-group mb-3"><input type="text" class="form-control" id="cari" placeholder="Cari judul, klien, atau kategori"><div class="input-group-append"><span class="input-group-text bg-primary text-white"><i class="fas fa-search"></i></span></div></div></div></div>
+			<div class="row"><div class="col-md-4"><div class="input-group mb-3"><input type="text" class="form-control" id="cari" placeholder="Cari judul, klien, brand, layanan, atau kategori"><div class="input-group-append"><span class="input-group-text bg-primary text-white"><i class="fas fa-search"></i></span></div></div></div></div>
 			<div id="data_kegiatan"></div>
 			<div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 mt-3">
 				<div id="pagination"></div>
@@ -45,7 +45,7 @@ function kegiatan() {
 			} else {
 				rows.forEach(function (item) {
 					var image = item.gambar ? '<?php echo base_url(); ?>' + item.gambar : '<?php echo $admin_asset_path; ?>/img/undraw_posting_photo.svg';
-					html += `<div class="card-kegiatan border rounded mb-3 p-3"><div class="row align-items-center"><div class="col-md-2 mb-3 mb-md-0"><img src="${escapeHtml(image)}" alt="${escapeHtml(item.judul)}" class="img-fluid rounded" style="width:100%;height:96px;object-fit:cover"></div><div class="col-md-7"><div class="small text-muted mb-1">${escapeHtml(item.tanggal)} &middot; ${escapeHtml(item.kategori)}</div><h5 class="mb-1 text-gray-900">${escapeHtml(item.judul)}</h5><p class="mb-0 text-muted">Klien: ${escapeHtml(item.klien)}</p></div><div class="col-md-3 mt-3 mt-md-0"><div class="admin-record-meta"><span class="badge badge-${item.status === 'publish' ? 'success' : 'secondary'}">${escapeHtml(item.status)}</span><div class="admin-action-group"><a href="<?php echo site_url('admin/kegiatan/edit'); ?>/${item.id_kegiatan}" class="btn btn-sm btn-warning" title="Edit"><i class="fas fa-edit"></i></a><button type="button" class="btn btn-sm btn-danger" onclick="hapusKegiatan(${item.id_kegiatan})" title="Hapus"><i class="fas fa-trash"></i></button></div></div></div></div></div>`;
+					html += `<div class="card-kegiatan border rounded mb-3 p-3"><div class="row align-items-center"><div class="col-md-2 mb-3 mb-md-0"><img src="${escapeHtml(image)}" alt="${escapeHtml(item.judul)}" class="img-fluid rounded" style="width:100%;height:96px;object-fit:cover"></div><div class="col-md-7"><div class="small text-muted mb-1">${escapeHtml(item.tanggal)} &middot; ${escapeHtml(item.kategori)}</div><h5 class="mb-1 text-gray-900">${escapeHtml(item.judul)}</h5><p class="mb-0 text-muted">Klien: ${escapeHtml(item.klien)} &middot; Brand: ${escapeHtml(item.brand)}</p><p class="mb-0 text-muted small">${escapeHtml(item.layanan)}</p></div><div class="col-md-3 mt-3 mt-md-0"><div class="admin-record-meta"><span class="badge badge-${item.status === 'publish' ? 'success' : 'secondary'}">${escapeHtml(item.status)}</span><div class="admin-action-group"><a href="<?php echo site_url('admin/kegiatan/edit'); ?>/${item.id_kegiatan}" class="btn btn-sm btn-warning" title="Edit"><i class="fas fa-edit"></i></a><button type="button" class="btn btn-sm btn-danger" onclick="hapusKegiatan(${item.id_kegiatan})" title="Hapus"><i class="fas fa-trash"></i></button></div></div></div></div></div>`;
 				});
 			}
 			$('#data_kegiatan').html(html);

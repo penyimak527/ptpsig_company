@@ -131,6 +131,9 @@ class Kegiatan extends Admin_base
 			'slug' => $slug,
 			'klien' => trim((string) $this->input->post('klien')),
 			'kategori' => trim((string) $this->input->post('kategori')),
+			'layanan' => trim((string) $this->input->post('layanan')),
+			'brand' => trim((string) $this->input->post('brand')),
+			'label_detail' => trim((string) $this->input->post('label_detail')),
 			'tanggal' => $this->format_date_input($this->input->post('tanggal')),
 			'ringkasan' => trim((string) $this->input->post('ringkasan')),
 			'status' => $this->input->post('status') === 'publish' ? 'publish' : 'draft',
@@ -139,7 +142,7 @@ class Kegiatan extends Admin_base
 
 	private function kegiatan_valid($data)
 	{
-		$required = array('judul', 'klien', 'kategori', 'tanggal', 'ringkasan');
+		$required = array('judul', 'klien', 'kategori', 'layanan', 'brand', 'label_detail', 'tanggal', 'ringkasan');
 		foreach ($required as $field) {
 			if (empty($data[$field])) {
 				$this->json(array('status' => FALSE, 'message' => 'Semua informasi kegiatan wajib diisi.'));

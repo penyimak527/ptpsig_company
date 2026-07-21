@@ -14,8 +14,13 @@ $activity_date_input = $activity_date !== FALSE ? $activity_date->format('Y-m-d'
 			<div class="form-group"><label>Judul Kegiatan</label><input class="form-control" name="judul" required value="<?php echo htmlspecialchars($item['judul'], ENT_QUOTES, 'UTF-8'); ?>"></div>
 			<div class="row">
 				<div class="col-md-4"><div class="form-group"><label>Nama Klien</label><input class="form-control" name="klien" required value="<?php echo htmlspecialchars($item['klien'], ENT_QUOTES, 'UTF-8'); ?>"></div></div>
-				<div class="col-md-4"><div class="form-group"><label>Kategori/Industri</label><input class="form-control" name="kategori" required value="<?php echo htmlspecialchars($item['kategori'], ENT_QUOTES, 'UTF-8'); ?>"></div></div>
-				<div class="col-md-4"><div class="form-group"><label>Tanggal Kegiatan</label><input type="date" class="form-control" name="tanggal" required value="<?php echo htmlspecialchars($activity_date_input, ENT_QUOTES, 'UTF-8'); ?>"><small class="form-text text-muted">Disimpan dalam format dd:mm:yyyy.</small></div></div>
+				<div class="col-md-4"><div class="form-group"><label>Industri/Kategori</label><input class="form-control" name="kategori" required value="<?php echo htmlspecialchars($item['kategori'], ENT_QUOTES, 'UTF-8'); ?>"></div></div>
+				<div class="col-md-4"><div class="form-group"><label>Layanan</label><input class="form-control" name="layanan" required value="<?php echo htmlspecialchars(isset($item['layanan']) ? $item['layanan'] : '', ENT_QUOTES, 'UTF-8'); ?>"></div></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4"><div class="form-group"><label>Brand</label><input class="form-control" name="brand" required value="<?php echo htmlspecialchars(isset($item['brand']) ? $item['brand'] : '', ENT_QUOTES, 'UTF-8'); ?>"></div></div>
+				<div class="col-md-4"><div class="form-group"><label>Label Detail</label><input class="form-control" name="label_detail" required value="<?php echo htmlspecialchars(isset($item['label_detail']) ? $item['label_detail'] : '', ENT_QUOTES, 'UTF-8'); ?>"><small class="form-text text-muted">Tampil di atas judul detail.</small></div></div>
+				<div class="col-md-4"><div class="form-group"><label>Tanggal Kegiatan</label><input type="date" class="form-control" name="tanggal" required value="<?php echo htmlspecialchars($activity_date_input, ENT_QUOTES, 'UTF-8'); ?>"><small class="form-text text-muted">Tahun pada detail diambil dari tanggal ini.</small></div></div>
 			</div>
 			<div class="form-group"><label>Ringkasan</label><textarea class="form-control" name="ringkasan" rows="3" maxlength="500" required><?php echo htmlspecialchars($item['ringkasan'], ENT_QUOTES, 'UTF-8'); ?></textarea><small class="form-text text-muted">Ditampilkan pada kartu dan pembuka halaman detail.</small></div>
 			<div class="row">

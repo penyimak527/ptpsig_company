@@ -8,9 +8,14 @@
 		<div class="card shadow mb-4"><div class="card-body">
 			<div class="form-group"><label>Judul Kegiatan</label><input class="form-control" name="judul" required></div>
 			<div class="row">
-				<div class="col-md-4"><div class="form-group"><label>Nama Klien</label><input class="form-control" name="klien" required></div></div>
-				<div class="col-md-4"><div class="form-group"><label>Kategori/Industri</label><input class="form-control" name="kategori" required></div></div>
-				<div class="col-md-4"><div class="form-group"><label>Tanggal Kegiatan</label><input type="date" class="form-control" name="tanggal" required><small class="form-text text-muted">Disimpan dalam format dd:mm:yyyy.</small></div></div>
+				<div class="col-md-4"><div class="form-group"><label>Nama Klien</label><input class="form-control" name="klien" required placeholder="Contoh: RESTOKU"></div></div>
+				<div class="col-md-4"><div class="form-group"><label>Industri/Kategori</label><input class="form-control" name="kategori" required placeholder="Contoh: Retail dan F&B"></div></div>
+				<div class="col-md-4"><div class="form-group"><label>Layanan</label><input class="form-control" name="layanan" required placeholder="Contoh: Web Application Development"></div></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4"><div class="form-group"><label>Brand</label><input class="form-control" name="brand" required placeholder="Contoh: RESTOKU"></div></div>
+				<div class="col-md-4"><div class="form-group"><label>Label Detail</label><input class="form-control" name="label_detail" required placeholder="Contoh: Studi Kasus · Sistem Informasi Manajemen"><small class="form-text text-muted">Tampil di atas judul detail.</small></div></div>
+				<div class="col-md-4"><div class="form-group"><label>Tanggal Kegiatan</label><input type="date" class="form-control" name="tanggal" required><small class="form-text text-muted">Tahun pada detail diambil dari tanggal ini.</small></div></div>
 			</div>
 			<div class="form-group"><label>Ringkasan</label><textarea class="form-control" name="ringkasan" rows="3" maxlength="500" required placeholder="Ringkasan singkat untuk kartu kegiatan"></textarea><small class="form-text text-muted">Ditampilkan pada kartu dan pembuka halaman detail.</small></div>
 			<div class="row">
@@ -73,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		var card = $(this).closest('.kegiatan-section'); card.next('.kegiatan-section').after(card); refreshLabels();
 	});
 
-	addSection();
+	['Informasi Umum', 'Pengenalan', 'Tantangan', 'Solusi'].forEach(function (title) { addSection({judul:title}); });
 	$('#form-tambah').on('submit', function (event) {
 		event.preventDefault();
 		var valid = true;

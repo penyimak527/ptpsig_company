@@ -11,6 +11,8 @@ class M_kegiatan extends CI_Model
 				->like('judul', $search)
 				->or_like('klien', $search)
 				->or_like('kategori', $search)
+				->or_like('layanan', $search)
+				->or_like('brand', $search)
 				->group_end();
 		}
 		return $this->db->order_by("STR_TO_DATE(tanggal, '%d:%m:%Y')", 'DESC', FALSE)->order_by('id_kegiatan', 'DESC')->get('kegiatan')->result_array();

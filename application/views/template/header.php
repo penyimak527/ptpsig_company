@@ -2123,6 +2123,39 @@
 			}
 		}
 
+		/* Detail kegiatan - komposisi mengikuti halaman portofolio JWM. */
+		.pyramid-detail-section { margin-top: 93px; padding: 42px 0 80px; background: #f8fbff; }
+		.pyramid-detail-breadcrumb { max-width: 1180px; margin: 0 auto 30px; display:flex; flex-wrap:wrap; gap:9px; color:#607087; font-size:13px; font-weight:700; }
+		.pyramid-detail-breadcrumb a { color:var(--pyramid-primary-dark); }
+		.pyramid-detail-layout { max-width:1180px; margin:0 auto; display:grid; grid-template-columns:240px minmax(0,1fr); gap:68px; align-items:start; }
+		.pyramid-detail-facts { position:sticky; top:112px; display:block; padding:9px 22px; border:1px solid #d7e3f0; border-radius:20px; background:#fff; box-shadow:0 18px 50px rgba(7,31,63,.07); }
+		.pyramid-detail-fact { padding:16px 0; border-bottom:1px solid #dfe8f1; }
+		.pyramid-detail-fact:last-child { border-bottom:0; }
+		.pyramid-detail-fact span { display:block; margin-bottom:6px; color:#708096; font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.25px; }
+		.pyramid-detail-fact strong { display:block; color:#253d5e; font-size:14px; line-height:1.55; }
+		.pyramid-detail-hero { margin-bottom:24px; padding:40px 42px; border:1px solid #d7e5f2; border-radius:22px; background:linear-gradient(110deg,#fff 0%,#eef6ff 100%); box-shadow:0 16px 45px rgba(7,31,63,.05); }
+		.pyramid-detail-label { display:inline-flex; padding:7px 12px; border-radius:999px; background:#e1efff; color:#0055bd; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.2px; }
+		.pyramid-detail-hero h1 { margin:15px 0 12px; color:#0a2547; font-size:48px; line-height:1.1; }
+		.pyramid-detail-summary { margin:0; color:#61748e; font-size:17px; line-height:1.7; }
+		.pyramid-detail-cover { margin:0 0 28px; aspect-ratio:16/10; overflow:hidden; border:1px solid #d7e5f2; border-radius:22px; background:#eaf3fc; box-shadow:0 18px 48px rgba(7,31,63,.07); }
+		.pyramid-detail-cover img { width:100%; height:100%; object-fit:cover; }
+		.pyramid-story-row { display:grid; grid-template-columns:150px minmax(0,1fr); gap:28px; margin-bottom:15px; padding:27px 26px; border:1px solid #d9e5f0; border-radius:18px; background:#fff; box-shadow:0 10px 30px rgba(7,31,63,.035); }
+		.pyramid-story-row h2 { margin:1px 0 0; color:#0055bd; font-size:13px; font-weight:800; line-height:1.4; text-transform:uppercase; }
+		.pyramid-story-content,.pyramid-rich-content { color:#61748e; font-size:15px; line-height:1.8; }
+		.pyramid-rich-content p:last-child { margin-bottom:0; }
+		.pyramid-story-image { margin:20px 0 0; overflow:hidden; border-radius:14px; }
+		.pyramid-story-image img { width:100%; max-height:520px; object-fit:cover; }
+		.pyramid-detail-cta { padding:90px 0 72px; border-top:1px solid #dce7f1; background:#fff; }
+		.pyramid-consultation { display:flex; align-items:center; justify-content:space-between; gap:44px; }
+		.pyramid-detail-cta-label,.pyramid-related-heading>span { display:inline-flex; padding:8px 14px; border:1px solid #cfe0f2; border-radius:999px; color:#0055bd; font-size:12px; font-weight:800; }
+		.pyramid-consultation h2 { margin:28px 0 10px; color:#071f3f; font-size:40px; line-height:1.18; }
+		.pyramid-consultation p { max-width:760px; margin:0; color:#61748e; font-size:16px; }
+		.pyramid-related-section { padding:58px 0 85px; background:#eef6ff; }
+		.pyramid-related-heading { max-width:900px; margin-bottom:30px; }
+		.pyramid-related-heading h3 { margin:28px 0 0; color:#071f3f; font-size:42px; line-height:1.18; }
+		@media(max-width:991px){.pyramid-detail-layout{grid-template-columns:1fr;gap:28px}.pyramid-detail-facts{position:static;display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}.pyramid-detail-fact{padding:14px 10px;border-bottom:0;border-right:1px solid #dfe8f1}.pyramid-detail-fact:last-child{border-right:0}}
+		@media(max-width:767px){.pyramid-detail-section{margin-top:120px;padding:28px 0 55px}.pyramid-detail-facts{grid-template-columns:repeat(2,minmax(0,1fr))}.pyramid-detail-fact{border-right:0;border-bottom:1px solid #dfe8f1}.pyramid-detail-hero{padding:25px 21px}.pyramid-detail-hero h1{font-size:34px}.pyramid-detail-cover{border-radius:16px}.pyramid-story-row{grid-template-columns:1fr;gap:10px;padding:21px}.pyramid-consultation{align-items:stretch;flex-direction:column;text-align:left}.pyramid-consultation h2{font-size:30px}.pyramid-related-heading h3{font-size:31px}.pyramid-detail-cta{padding:60px 0}.pyramid-related-section{padding:50px 0 60px}}
+
 	</style>
 	
 </head>
