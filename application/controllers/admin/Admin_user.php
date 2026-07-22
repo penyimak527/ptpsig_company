@@ -9,12 +9,12 @@ class Admin_user extends Admin_base
 		'primary_key' => 'id_admin',
 		'order_by' => 'id_admin',
 		'order_dir' => 'DESC',
-		'fields' => array('nama', 'username', 'email', 'password_hash', 'role', 'foto', 'status'),
+		'fields' => array('nama', 'username', 'password_hash', 'password_text', 'foto', 'status'),
 		'file_field' => 'foto',
 		'upload_path' => 'upload/admin',
 		'password_field' => 'password_hash',
 		'status_options' => array('aktif', 'nonaktif'),
-		'columns' => array('nama' => 'Nama', 'username' => 'Username', 'email' => 'Email', 'role' => 'Role', 'status' => 'Status'),
+		'columns' => array('nama' => 'Nama', 'username' => 'Username', 'status' => 'Status'),
 	);
 
 	public function index()
@@ -27,6 +27,7 @@ class Admin_user extends Admin_base
 		$rows = $this->admin->get_all('admin', 'id_admin', 'DESC');
 		foreach ($rows as &$row) {
 			unset($row['password_hash']);
+			unset($row['password_text']);
 		}
 		unset($row);
 		$this->json(array('status' => TRUE, 'data' => $rows));
@@ -38,6 +39,7 @@ class Admin_user extends Admin_base
 			if (!$this->valid_submission(FALSE)) {
 				return;
 			}
+			$_POST['password_text'] = (string) $this->input->post('password_hash');
 			$this->ajax_save_response();
 			return;
 		}
@@ -56,6 +58,10 @@ class Admin_user extends Admin_base
 		if ($this->input->method() === 'post') {
 			if (!$this->valid_submission(TRUE, $id)) {
 				return;
+			}
+			$password = (string) $this->input->post('password_hash');
+			if ($password !== '') {
+				$_POST['password_text'] = $password;
 			}
 			$this->ajax_save_response();
 			return;
@@ -77,15 +83,10 @@ class Admin_user extends Admin_base
 	{
 		$nama = trim((string) $this->input->post('nama'));
 		$username = trim((string) $this->input->post('username'));
-		$email = trim((string) $this->input->post('email'));
 		$password = (string) $this->input->post('password_hash');
 
-		if ($nama === '' || $username === '' || $email === '') {
-			$this->json(array('status' => FALSE, 'message' => 'Nama, username, dan email wajib diisi.'));
-			return FALSE;
-		}
-		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-			$this->json(array('status' => FALSE, 'message' => 'Format email tidak valid.'));
+		if ($nama === '' || $username === '') {
+			$this->json(array('status' => FALSE, 'message' => 'Nama dan username wajib diisi.'));
 			return FALSE;
 		}
 		if (!$editing && strlen($password) < 8) {
@@ -98,16 +99,10 @@ class Admin_user extends Admin_base
 		}
 
 		$username_owner = $this->admin->get_where('admin', array('username' => $username));
-		$email_owner = $this->admin->get_where('admin', array('email' => $email));
 		if (!empty($username_owner) && (int) $username_owner['id_admin'] !== (int) $id) {
 			$this->json(array('status' => FALSE, 'message' => 'Username sudah digunakan.'));
 			return FALSE;
 		}
-		if (!empty($email_owner) && (int) $email_owner['id_admin'] !== (int) $id) {
-			$this->json(array('status' => FALSE, 'message' => 'Email sudah digunakan.'));
-			return FALSE;
-		}
-
 		return TRUE;
 	}
 }
