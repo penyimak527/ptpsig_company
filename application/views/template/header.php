@@ -73,6 +73,10 @@
 			color: var(--pyramid-primary);
 		}
 
+		.header-topbar-info-wrapper .header-topbar-social ul li a {
+			color: inherit;
+		}
+
 		.header-main-nav {
 			height: 62px;
 			background: #fff;
