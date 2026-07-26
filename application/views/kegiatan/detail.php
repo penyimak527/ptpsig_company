@@ -4,7 +4,7 @@ if (!function_exists('pyramid_public_image_url')) {
 	function pyramid_public_image_url($path, $asset_path, $base_path)
 	{
 		if (empty($path)) {
-			$path = 'img_pyramid/ASSET WEB PROFILE/BERSAMA MEREKA/diskusi-session-with-client.PNG';
+			$path = 'img_pyramid/asset_web_profile/bersama_mereka/diskusi-session-with-client.PNG';
 		}
 		return strpos($path, 'upload/') === 0 ? $base_path . '/' . $path : $asset_path . '/' . $path;
 	}

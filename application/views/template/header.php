@@ -494,27 +494,27 @@
 		}
 
 		.pyramid-history-hero {
-			background-image: url('<?php echo $asset_path; ?>/img_pyramid/ASSET WEB PROFILE/FOTO TIM/activity-kantor-13.jpg') !important;
+			background-image: url('<?php echo $asset_path; ?>/img_pyramid/asset_web_profile/FOTO TIM/activity-kantor-13.jpg') !important;
 			background-position: center 40%;
 		}
 
 		.pyramid-structure-hero {
-			background-image: url('<?php echo $asset_path; ?>/img_pyramid/ASSET WEB PROFILE/FOTO TIM/activity-kantor-14.jpg') !important;
+			background-image: url('<?php echo $asset_path; ?>/img_pyramid/asset_web_profile/FOTO TIM/activity-kantor-14.jpg') !important;
 			background-position: center 48%;
 		}
 
 		.pyramid-vision-hero {
-			background-image: url('<?php echo $asset_path; ?>/img_pyramid/ASSET WEB PROFILE/BERSAMA MEREKA/diskusi-session-with-erzora-kosmetik.jpg') !important;
+			background-image: url('<?php echo $asset_path; ?>/img_pyramid/asset_web_profile/bersama_mereka/diskusi-session-with-erzora-kosmetik.jpg') !important;
 			background-position: center 52%;
 		}
 
 		.pyramid-team-hero {
-			background-image: url('<?php echo $asset_path; ?>/img_pyramid/ASSET WEB PROFILE/FOTO TIM/activity-kantor-9.jpg') !important;
+			background-image: url('<?php echo $asset_path; ?>/img_pyramid/asset_web_profile/FOTO TIM/activity-kantor-9.jpg') !important;
 			background-position: center 52%;
 		}
 
 		.pyramid-activity-hero {
-			background-image: url('<?php echo $asset_path; ?>/img_pyramid/ASSET WEB PROFILE/FOTO TIM/makan-w-tim.jpg') !important;
+			background-image: url('<?php echo $asset_path; ?>/img_pyramid/asset_web_profile/FOTO TIM/makan-w-tim.jpg') !important;
 			background-position: center 48%;
 		}
 
@@ -2323,10 +2323,9 @@
 						</div>
 						<div class="offcanvas-social">
 							<ul class="text-center">
-								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fab fa-instagram"></i></a></li>
-								<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-								<li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+								<li><a href="https://www.facebook.com/piramidsoft"><i class="fab fa-facebook-f"></i></a></li>
+								<li><a href="https://www.instagram.com/piramidsoft/"><i class="fab fa-instagram"></i></a></li>
+								<li><a href="https://api.whatsapp.com/send?phone=6285157720203"><i class="fab fa-whatsapp"></i></a></li>
 							</ul>
 						</div>
 						<div id="menu" class="text-left ">
@@ -2345,7 +2344,7 @@
 							</ul>
 						</div>
 						<div class="offcanvas_footer">
-							<span><a href="mailto:marketing@ptpsig.com"><i class="fa fa-envelope-o"></i> marketing@ptpsig.com</a></span>
+							<span><a href="mailto:piramidsoftid@gmail.com"><i class="fa fa-envelope-o"></i> piramidsoftid@gmail.com</a></span>
 						</div>
 					</div>
 				</div>
@@ -2374,16 +2373,15 @@
 							<div class="header-topbar-info-wrapper">
 								<div class="header-topbar-info">
 									<ul>
-										<li><i class="fas fa-envelope"></i> marketing@ptpsig.com</li>
+										<li><i class="fas fa-envelope"></i> piramidsoftid@gmail.com</li>
 										<li><i class="fas fa-clock"></i> Senin - Sabtu: 08.00 - 17.00 WIB</li>
 									</ul>
 								</div>
 								<div class="header-topbar-social">
 									<ul>
-										<li><i class="fab fa-facebook-f"></i></li>
-										<li><i class="fab fa-instagram"></i></li>
-										<li><i class="fab fa-linkedin-in"></i></li>
-										<li><i class="fab fa-whatsapp"></i></li>
+										<li><a href="https://www.facebook.com/piramidsoft"><i class="fab fa-facebook-f"></i></a></li>
+										<li><a href="https://www.instagram.com/piramidsoft/"><i class="fab fa-instagram"></i></a></li>
+										<li><a href="https://api.whatsapp.com/send?phone=6285157720203"><i class="fab fa-whatsapp"></i></a></li>
 									</ul>
 								</div>
 							</div>

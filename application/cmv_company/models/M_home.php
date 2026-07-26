@@ -14,25 +14,25 @@ class M_home extends CI_Model
 		return $this->get_public_data();
 	}
 
-	public function get_public_data()
-	{
-		return array(
-			'title' => 'Piramidsoft - Company Profile',
-			'company' => $this->get_company_data(),
-			'menus' => $this->get_menus(),
-			'services' => $this->get_services(),
-			'advantages' => $this->get_advantages(),
-			'highlights' => $this->get_highlights(),
-			'teams' => $this->get_team_data(),
-			'brands' => $this->get_brand_data(),
-			'visi_misi' => $this->get_visi_misi_data(),
-			'struktur_organisasi' => $this->get_struktur_data(),
-			'sejarah' => $this->get_sejarah_data(),
-			'activities' => $this->get_activity_data(),
-			'hero_images' => $this->get_hero_images(),
-			'tech_groups' => $this->get_tech_groups(),
-		);
-	}
+	// public function get_public_data()
+	// {
+	// 	return array(
+	// 		'title' => 'Piramidsoft - Company Profile',
+	// 		'company' => $this->get_company_data(),
+	// 		'menus' => $this->get_menus(),
+	// 		'services' => $this->get_services(),
+	// 		'advantages' => $this->get_advantages(),
+	// 		'highlights' => $this->get_highlights(),
+	// 		'teams' => $this->get_team_data(),
+	// 		'brands' => $this->get_brand_data(),
+	// 		'visi_misi' => $this->get_visi_misi_data(),
+	// 		'struktur_organisasi' => $this->get_struktur_data(),
+	// 		'sejarah' => $this->get_sejarah_data(),
+	// 		'activities' => $this->get_activity_data(),
+	// 		'hero_images' => $this->get_hero_images(),
+	// 		'tech_groups' => $this->get_tech_groups(),
+	// 	);
+	// }
 
 	public function get_activity_by_slug($slug)
 	{

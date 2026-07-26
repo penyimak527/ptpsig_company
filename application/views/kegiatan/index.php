@@ -4,7 +4,7 @@ if (!function_exists('pyramid_public_image_url')) {
 	function pyramid_public_image_url($path, $asset_path, $base_path)
 	{
 		if (empty($path)) {
-			$path = 'img_pyramid/ASSET WEB PROFILE/BERSAMA MEREKA/diskusi-session-with-client.PNG';
+			$path = 'img_pyramid/asset_web_profile/bersama_mereka/diskusi-session-with-client.PNG';
 		}
 		return strpos($path, 'upload/') === 0 ? $base_path . '/' . $path : $asset_path . '/' . $path;
 	}
@@ -36,7 +36,7 @@ if (!function_exists('pyramid_public_image_url')) {
 				</div>
 			<?php endif; ?>
 			<?php foreach ($activities as $activity) : ?>
-				<?php $activity_image = !empty($activity['image']) ? $activity['image'] : 'img_pyramid/ASSET WEB PROFILE/BERSAMA MEREKA/diskusi-session-with-client.PNG'; ?>
+				<?php $activity_image = !empty($activity['image']) ? $activity['image'] : 'img_pyramid/asset_web_profile/bersama_mereka/diskusi-session-with-client.PNG'; ?>
 				<article class="pyramid-portfolio-card animated wow fadeInUp" data-wow-duration="1200ms">
 					<a class="pyramid-portfolio-cover" href="<?php echo site_url('kegiatan/detail/' . $activity['slug']); ?>" aria-label="Lihat detail <?php echo htmlspecialchars($activity['title'], ENT_QUOTES, 'UTF-8'); ?>">
 						<img src="<?php echo pyramid_public_image_url($activity_image, $asset_path, $base_path); ?>" alt="<?php echo htmlspecialchars($activity['title'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy">

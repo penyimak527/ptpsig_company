@@ -58,8 +58,8 @@ function pyramid_image_url($path, $asset_path, $base_path)
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="infetech-about-thumb pyramid-about-gallery animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="0ms">
-					<img class="pyramid-about-photo-main" src="<?php echo $asset_path; ?>/img_pyramid/ASSET WEB PROFILE/FOTO TIM/activity-kantor-13.jpg" alt="Tim Piramidsoft">
-					<img class="thumb pyramid-about-photo-secondary" src="<?php echo $asset_path; ?>/img_pyramid/ASSET WEB PROFILE/BERSAMA MEREKA/diskusi-session-with-erzora-kosmetik.jpg" alt="Kegiatan bersama klien">
+					<img class="pyramid-about-photo-main" src="<?php echo $asset_path; ?>/img_pyramid/asset_web_profile/FOTO TIM/activity-kantor-13.jpg" alt="Tim Piramidsoft">
+					<img class="thumb pyramid-about-photo-secondary" src="<?php echo $asset_path; ?>/img_pyramid/asset_web_profile/bersama_mereka/diskusi-session-with-erzora-kosmetik.jpg" alt="Kegiatan bersama klien">
 					<img class="pyramid-about-corner-logo" src="<?php echo $asset_path; ?>/img_pyramid/logo/LOGO PYRAMID SAJA.png" alt="Logo Pyramid">
 				</div>
 			</div>
@@ -171,7 +171,7 @@ function pyramid_image_url($path, $asset_path, $base_path)
 		<div class="row pyramid-service-row">
 			<div class="col-xl-3 col-lg-6 col-md-6">
 				<div class="single-infetech-serice-item pyramid-service-card animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="0ms">
-					<div class="thumb"><img src="<?php echo $asset_path; ?>/img_pyramid/layanan/1.png" alt="Konsultasi Profesional"></div>
+					<div class="thumb"><img src="<?php echo $asset_path; ?>/img_pyramid/asset_web_profile/bersama_mereka/diskusi-session-with-erzora-kosmetik.jpg" alt="Konsultasi profesional bersama klien"></div>
 					<div class="content">
 						<div class="icon"><img src="<?php echo $asset_path; ?>/images/icon/service-icon-1.png" alt=""></div>
 						<h3 class="title"><a href="https://jasawebsitemurah.net/" target="_blank" rel="noopener noreferrer">Konsultasi Profesional</a></h3>
@@ -182,7 +182,7 @@ function pyramid_image_url($path, $asset_path, $base_path)
 			</div>
 			<div class="col-xl-3 col-lg-6 col-md-6">
 				<div class="single-infetech-serice-item pyramid-service-card animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="200ms">
-					<div class="thumb"><img src="<?php echo $asset_path; ?>/img_pyramid/layanan/2.png" alt="Pengembangan Kustom"></div>
+					<div class="thumb"><img src="<?php echo $asset_path; ?>/img_pyramid/asset_web_profile/FOTO TIM/activity-kantor-10.png" alt="Tim pengembangan kustom Piramidsoft"></div>
 					<div class="content">
 						<div class="icon"><img src="<?php echo $asset_path; ?>/images/icon/service-icon-2.png" alt=""></div>
 						<h3 class="title"><a href="https://jasawebsitemurah.net/" target="_blank" rel="noopener noreferrer">Pengembangan Kustom</a></h3>
@@ -193,7 +193,7 @@ function pyramid_image_url($path, $asset_path, $base_path)
 			</div>
 			<div class="col-xl-3 col-lg-6 col-md-6">
 				<div class="single-infetech-serice-item pyramid-service-card animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">
-					<div class="thumb"><img src="<?php echo $asset_path; ?>/img_pyramid/layanan/3.png" alt="Integrasi Sistem"></div>
+					<div class="thumb"><img src="<?php echo $asset_path; ?>/img_pyramid/asset_web_profile/FOTO TIM/activity-kantor-4.png" alt="Tim integrasi sistem Piramidsoft"></div>
 					<div class="content">
 						<div class="icon"><img src="<?php echo $asset_path; ?>/images/icon/service-icon-3.png" alt=""></div>
 						<h3 class="title"><a href="https://jasawebsitemurah.net/" target="_blank" rel="noopener noreferrer">Integrasi Sistem</a></h3>
@@ -204,7 +204,7 @@ function pyramid_image_url($path, $asset_path, $base_path)
 			</div>
 			<div class="col-xl-3 col-lg-6 col-md-6">
 				<div class="single-infetech-serice-item pyramid-service-card animated wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="600ms">
-					<div class="thumb"><img src="<?php echo $asset_path; ?>/img_pyramid/layanan/4.png" alt="Dukungan Pemeliharaan"></div>
+					<div class="thumb"><img src="<?php echo $asset_path; ?>/img_pyramid/asset_web_profile/bersama_mereka/kunjungan-supervisor-upskilling-BOE-malang.PNG" alt="Dukungan dan pendampingan klien"></div>
 					<div class="content">
 						<div class="icon"><img src="<?php echo $asset_path; ?>/images/icon/service-icon-1.png" alt=""></div>
 						<h3 class="title"><a href="https://jasawebsitemurah.net/" target="_blank" rel="noopener noreferrer">Dukungan Pemeliharaan</a></h3>
@@ -355,7 +355,7 @@ function pyramid_image_url($path, $asset_path, $base_path)
 				</div>
 			<?php endif; ?>
 			<?php foreach (array_slice($teams, 0, 3) as $index => $team) : ?>
-				<?php $team_image = !empty($team['image']) ? $team['image'] : 'img_pyramid/ASSET WEB PROFILE/FOTO TIM/activity-kantor-13.jpg'; ?>
+				<?php $team_image = !empty($team['image']) ? $team['image'] : 'img_pyramid/asset_web_profile/FOTO TIM/activity-kantor-13.jpg'; ?>
 				<div class="col-lg-4 col-md-6">
 					<div class="single-tema-item animated wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="<?php echo $index * 300; ?>ms">
 						<div class="top-line"></div>
@@ -410,7 +410,7 @@ function pyramid_image_url($path, $asset_path, $base_path)
 				</div>
 			<?php endif; ?>
 			<?php foreach (array_slice($activities, 0, 3) as $index => $activity) : ?>
-				<?php $activity_image = !empty($activity['image']) ? $activity['image'] : 'img_pyramid/ASSET WEB PROFILE/BERSAMA MEREKA/diskusi-session-with-client.PNG'; ?>
+				<?php $activity_image = !empty($activity['image']) ? $activity['image'] : 'img_pyramid/asset_web_profile/bersama_mereka/diskusi-session-with-client.PNG'; ?>
 				<div class="col-lg-4 col-md-6">
 					<div class="single-blog-item animated wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="<?php echo $index * 300; ?>ms">
 						<div class="thumb">
