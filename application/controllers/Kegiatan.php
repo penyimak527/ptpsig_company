@@ -33,7 +33,6 @@ class Kegiatan extends CI_Controller
 		$base_path = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/');
 		$data['base_path'] = $base_path === '' ? '' : $base_path;
 		$data['asset_path'] = ($base_path === '' ? '' : $base_path) . '/assets';
-		$data['menus'] = $this->build_menu_urls($data['menus']);
 		$data['title'] = $title;
 		return $data;
 	}
@@ -45,16 +44,4 @@ class Kegiatan extends CI_Controller
 		$this->load->view('template/footer', $data);
 	}
 
-	private function build_menu_urls($menus)
-	{
-		foreach ($menus as $key => $menu) {
-			$menus[$key]['url'] = site_url(isset($menu['path']) ? $menu['path'] : '') . (isset($menu['anchor']) ? $menu['anchor'] : '');
-			if (!empty($menu['children'])) {
-				foreach ($menu['children'] as $child_key => $child) {
-					$menus[$key]['children'][$child_key]['url'] = site_url($child['path']);
-				}
-			}
-		}
-		return $menus;
-	}
 }

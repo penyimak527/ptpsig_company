@@ -44,11 +44,12 @@ if (!function_exists('pyramid_public_image_url')) {
 				</div>
 			<?php endif; ?>
 			<?php foreach ($teams as $index => $team) : ?>
+				<?php $team_image = !empty($team['image']) ? $team['image'] : 'img_pyramid/ASSET WEB PROFILE/FOTO TIM/activity-kantor-13.jpg'; ?>
 				<div class="col-lg-4 col-md-6">
 					<div class="single-tema-item animated wow fadeInUp" data-wow-duration="1500ms" data-wow-delay="<?php echo $index * 150; ?>ms">
 						<div class="top-line"></div>
 						<div class="thumb">
-							<img src="<?php echo pyramid_public_image_url($team['image'], $asset_path, $base_path); ?>" alt="<?php echo $team['name']; ?>">
+							<img src="<?php echo pyramid_public_image_url($team_image, $asset_path, $base_path); ?>" alt="<?php echo $team['name']; ?>">
 						</div>
 						<div class="content">
 							<h4 class="title"><?php echo $team['name']; ?></h4>

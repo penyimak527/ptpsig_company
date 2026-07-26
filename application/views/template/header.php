@@ -145,6 +145,10 @@
 			background-color: var(--pyramid-primary-dark) !important;
 		}
 
+		.single-blog-item .content .blog-meta > a {
+			color: #fff !important;
+		}
+
 		.main-btn:hover {
 			background-color: #fff !important;
 			color: var(--pyramid-primary) !important;
@@ -363,9 +367,123 @@
 			margin-bottom: 0;
 		}
 
+		.pyramid-footer-main {
+			row-gap: 38px;
+		}
+
+		.pyramid-footer-main .footer-nav,
+		.pyramid-footer-main .footer-info {
+			margin-top: 0;
+		}
+
+		.pyramid-footer-main .footer-nav ul li {
+			margin-bottom: 9px;
+		}
+
+		.pyramid-footer-areas {
+			display: grid;
+			grid-template-columns: 280px minmax(0, 1fr);
+			gap: 44px;
+			align-items: start;
+			margin-top: 58px;
+			padding: 48px 0;
+			border-top: 1px solid rgba(255, 255, 255, 0.14);
+		}
+
+		.pyramid-footer-area-intro {
+			padding-left: 18px;
+			border-left: 3px solid #73a6d5;
+		}
+
+		.pyramid-footer-area-intro h4,
+		.pyramid-footer-address h4 {
+			margin: 0 0 13px;
+			font-size: 20px;
+			color: #fff;
+		}
+
+		.pyramid-footer-area-intro p,
+		.pyramid-footer-address p {
+			margin: 0;
+			line-height: 1.75;
+			color: #cfdeed;
+		}
+
+		.pyramid-footer-area-links {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 10px 12px;
+		}
+
+		.pyramid-footer-area-links a {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			min-height: 46px;
+			padding: 10px 14px;
+			color: #dce9f5;
+			background: #082744;
+			border: 1px solid rgba(141, 185, 223, 0.38);
+			border-radius: 4px;
+		}
+
+		.pyramid-footer-area-links a:hover {
+			color: #fff;
+			background: #0b407a;
+			border-color: #73a6d5;
+		}
+
+		.pyramid-footer-area-links i {
+			font-size: 12px;
+		}
+
+		.pyramid-footer-location {
+			display: grid;
+			grid-template-columns: 280px minmax(0, 1fr);
+			gap: 44px;
+			align-items: center;
+			padding: 48px 0 0;
+			border-top: 1px solid rgba(255, 255, 255, 0.14);
+		}
+
+		.pyramid-footer-address strong {
+			display: block;
+			margin-bottom: 9px;
+			color: #fff;
+		}
+
+		.pyramid-footer-address a {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			margin-top: 18px;
+			font-weight: 700;
+			color: #8db9df;
+		}
+
+		.pyramid-footer-address a:hover {
+			color: #fff;
+		}
+
+		.pyramid-footer-map {
+			height: 260px;
+			overflow: hidden;
+			background: #fff;
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			border-radius: 6px;
+		}
+
+		.pyramid-footer-map iframe {
+			display: block;
+			width: 100%;
+			height: 100%;
+			border: 0;
+		}
+
 		.pyramid-history-hero,
 		.pyramid-vision-hero,
 		.pyramid-structure-hero,
+		.pyramid-activity-hero,
 		.pyramid-team-hero {
 			position: relative;
 			isolation: isolate;
@@ -395,9 +513,15 @@
 			background-position: center 52%;
 		}
 
+		.pyramid-activity-hero {
+			background-image: url('<?php echo $asset_path; ?>/img_pyramid/ASSET WEB PROFILE/FOTO TIM/makan-w-tim.jpg') !important;
+			background-position: center 48%;
+		}
+
 		.pyramid-history-hero::before,
 		.pyramid-vision-hero::before,
 		.pyramid-structure-hero::before,
+		.pyramid-activity-hero::before,
 		.pyramid-team-hero::before {
 			position: absolute;
 			z-index: -1;
@@ -415,6 +539,7 @@
 		.pyramid-history-hero::after,
 		.pyramid-vision-hero::after,
 		.pyramid-structure-hero::after,
+		.pyramid-activity-hero::after,
 		.pyramid-team-hero::after {
 			background: transparent !important;
 		}
@@ -422,6 +547,7 @@
 		.pyramid-history-hero .breadcrumb-item,
 		.pyramid-vision-hero .breadcrumb-item,
 		.pyramid-structure-hero .breadcrumb-item,
+		.pyramid-activity-hero .breadcrumb-item,
 		.pyramid-team-hero .breadcrumb-item {
 			position: relative;
 			z-index: 1;
@@ -725,21 +851,11 @@
 		.pyramid-hero-collage {
 			position: absolute;
 			inset: 0;
-			display: grid;
-			grid-template-columns: 1.8fr 1fr 1fr;
-			grid-template-rows: 1fr 1fr;
-			gap: 3px;
 			z-index: -2;
 			background: var(--pyramid-primary-dark);
-		}
-
-		.pyramid-hero-collage span {
 			background-size: cover;
 			background-position: center;
-		}
-
-		.pyramid-hero-collage span:first-child {
-			grid-row: 1 / 3;
+			background-repeat: no-repeat;
 		}
 
 		.infetech-banner-area {
@@ -1697,6 +1813,12 @@
 			.footer-newsletter {
 				margin-right: 0;
 			}
+
+			.pyramid-footer-areas,
+			.pyramid-footer-location {
+				grid-template-columns: 1fr;
+				gap: 28px;
+			}
 		}
 
 		@media (max-width: 767px) {
@@ -1748,14 +1870,6 @@
 				color: var(--pyramid-primary-dark);
 				background: #fff;
 				border-color: #fff;
-			}
-
-			.pyramid-hero-collage {
-				grid-template-columns: 1.4fr 1fr;
-			}
-
-			.pyramid-hero-collage span:nth-child(n+4) {
-				display: none;
 			}
 
 			.infetech-banner-area .infetech-banner-content {
@@ -1826,6 +1940,7 @@
 			.pyramid-history-hero,
 			.pyramid-vision-hero,
 			.pyramid-structure-hero,
+			.pyramid-activity-hero,
 			.pyramid-team-hero {
 				min-height: 290px;
 			}
@@ -2118,6 +2233,23 @@
 				justify-content: flex-start;
 			}
 
+			.pyramid-footer-areas {
+				margin-top: 18px;
+				padding: 38px 0;
+			}
+
+			.pyramid-footer-area-links {
+				grid-template-columns: 1fr;
+			}
+
+			.pyramid-footer-location {
+				padding-top: 38px;
+			}
+
+			.pyramid-footer-map {
+				height: 240px;
+			}
+
 			.footer-copyright {
 				padding: 20px 15px;
 			}
@@ -2199,22 +2331,21 @@
 						</div>
 						<div id="menu" class="text-left ">
 							<ul class="offcanvas_main_menu">
-								<?php foreach ($menus as $menu) : ?>
-									<li class="<?php echo !empty($menu['children']) ? 'menu-item-has-children' : ''; ?>">
-										<a href="<?php echo $menu['url']; ?>"><?php echo $menu['label']; ?></a>
-										<?php if (!empty($menu['children'])) : ?>
-											<ul class="sub-menu">
-												<?php foreach ($menu['children'] as $child) : ?>
-													<li><a href="<?php echo $child['url']; ?>"><?php echo $child['label']; ?></a></li>
-												<?php endforeach; ?>
-											</ul>
-										<?php endif; ?>
-									</li>
-								<?php endforeach; ?>
+								<li><a href="<?php echo site_url(); ?>#beranda">Beranda</a></li>
+								<li class="menu-item-has-children">
+									<a href="#">Profile</a>
+									<ul class="sub-menu">
+										<li><a href="<?php echo site_url('profil/sejarah'); ?>">Sejarah</a></li>
+										<li><a href="<?php echo site_url('profil/visi_misi'); ?>">Visi dan Misi</a></li>
+										<li><a href="<?php echo site_url('profil/struktur_organisasi'); ?>">Struktur Organisasi</a></li>
+									</ul>
+								</li>
+								<li><a href="<?php echo site_url('profil/tim'); ?>">Tim</a></li>
+								<li><a href="<?php echo site_url('kegiatan'); ?>">Kegiatan</a></li>
 							</ul>
 						</div>
 						<div class="offcanvas_footer">
-							<span><a href="mailto:<?php echo $company['email']; ?>"><i class="fa fa-envelope-o"></i> <?php echo $company['email']; ?></a></span>
+							<span><a href="mailto:marketing@ptpsig.com"><i class="fa fa-envelope-o"></i> marketing@ptpsig.com</a></span>
 						</div>
 					</div>
 				</div>
@@ -2225,8 +2356,8 @@
 	<section class="infetech-header-area header-sticky">
 		<div class="header-wrapper">
 			<div class="templates-logo">
-				<!-- <a href="#beranda"><img src="<?php echo $asset_path; ?>/images/logo-white.png" alt="<?php echo $company['name']; ?>"></a> -->
-				<a href="<?php echo site_url(); ?>#beranda"><img src="<?php echo $asset_path; ?>/img_pyramid/logo/logo_pyramid_putih.png" alt="<?php echo $company['name']; ?>"></a>
+				<!-- <a href="#beranda"><img src="<?php echo $asset_path; ?>/images/logo-white.png" alt="Piramidsoft"></a> -->
+				<a href="<?php echo site_url(); ?>#beranda"><img src="<?php echo $asset_path; ?>/img_pyramid/logo/logo_pyramid_putih.png" alt="Piramidsoft"></a>
 				<div class="pyramid-mobile-toggle canvas_open">
 					<a href="#" aria-label="Buka menu"><i class="fas fa-bars"></i></a>
 				</div>
@@ -2236,14 +2367,14 @@
 					<div class="row g-0 align-items-center ">
 						<div class="col-lg-6">
 							<div class="header-topbar-text">
-								<p>Company Profile <?php echo $company['name']; ?></p>
+								<p>Company Profile Piramidsoft</p>
 							</div>
 						</div>
 						<div class="col-lg-6">
 							<div class="header-topbar-info-wrapper">
 								<div class="header-topbar-info">
 									<ul>
-										<li><i class="fas fa-envelope"></i> <?php echo $company['email']; ?></li>
+										<li><i class="fas fa-envelope"></i> marketing@ptpsig.com</li>
 										<li><i class="fas fa-clock"></i> Senin - Sabtu: 08.00 - 17.00 WIB</li>
 									</ul>
 								</div>
@@ -2262,18 +2393,17 @@
 				<div class="header-main-nav">
 					<div class="header-main-nav-box">
 						<ul>
-							<?php foreach ($menus as $menu) : ?>
-								<li class="<?php echo !empty($menu['children']) ? 'menu-item-has-children' : ''; ?>">
-									<a href="<?php echo $menu['url']; ?>"><?php echo $menu['label']; ?></a>
-									<?php if (!empty($menu['children'])) : ?>
-										<ul class="sub-menu">
-											<?php foreach ($menu['children'] as $child) : ?>
-												<li><a href="<?php echo $child['url']; ?>"><?php echo $child['label']; ?></a></li>
-											<?php endforeach; ?>
-										</ul>
-									<?php endif; ?>
-								</li>
-							<?php endforeach; ?>
+							<li><a href="<?php echo site_url(); ?>#beranda">Beranda</a></li>
+							<li class="menu-item-has-children">
+								<a href="#">Profile</a>
+								<ul class="sub-menu">
+									<li><a href="<?php echo site_url('profil/sejarah'); ?>">Sejarah</a></li>
+									<li><a href="<?php echo site_url('profil/visi_misi'); ?>">Visi dan Misi</a></li>
+									<li><a href="<?php echo site_url('profil/struktur_organisasi'); ?>">Struktur Organisasi</a></li>
+								</ul>
+							</li>
+							<li><a href="<?php echo site_url('profil/tim'); ?>">Tim</a></li>
+							<li><a href="<?php echo site_url('kegiatan'); ?>">Kegiatan</a></li>
 						</ul>
 					</div>
 					<div class="header-main-info">

@@ -31,14 +31,14 @@
 			<article class="pyramid-direction-card pyramid-direction-mission">
 				<!-- <div class="pyramid-direction-number">01</div> -->
 				<span>Arah Perusahaan</span>
-				<h3><?php echo htmlspecialchars($visi_misi['visi']['title'], ENT_QUOTES, 'UTF-8'); ?></h3>
-				<div class="pyramid-rich-content ql-editor"><?php echo $visi_misi['visi']['description']; ?></div>
+				<h3>Visi</h3>
+				<div class="pyramid-rich-content ql-editor"><?php echo !empty($visi_misi['visi']) ? $visi_misi['visi'] : '<p>Data visi belum tersedia.</p>'; ?></div>
 			</article>
 			<article class="pyramid-direction-card pyramid-direction-mission">
 				<!-- <div class="pyramid-direction-number">02</div> -->
 				<span>Komitmen Perusahaan</span>
 				<h3>Misi</h3>
-				<div class="pyramid-rich-content ql-editor"><?php echo $visi_misi['misi']['description']; ?></div>
+				<div class="pyramid-rich-content ql-editor"><?php echo !empty($visi_misi['misi']) ? $visi_misi['misi'] : '<p>Data misi belum tersedia.</p>'; ?></div>
 			</article>
 		</div>
 	</div>

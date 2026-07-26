@@ -59,36 +59,9 @@ class Home extends CI_Controller
 		$base_path = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'])), '/');
 		$data['base_path'] = $base_path === '' ? '' : $base_path;
 		$data['asset_path'] = ($base_path === '' ? '' : $base_path) . '/assets';
-		$data['menus'] = $this->build_menu_urls($data['menus']);
-
-		if ($title !== NULL) {
-			$data['title'] = $title;
-		}
+		$data['title'] = $title !== NULL ? $title : 'Piramidsoft - Company Profile';
 
 		return $data;
-	}
-
-	private function build_menu_urls($menus)
-	{
-		foreach ($menus as $key => $menu) {
-			$menus[$key]['url'] = $this->build_url($menu);
-
-			if (!empty($menu['children'])) {
-				foreach ($menu['children'] as $child_key => $child) {
-					$menus[$key]['children'][$child_key]['url'] = $this->build_url($child);
-				}
-			}
-		}
-
-		return $menus;
-	}
-
-	private function build_url($item)
-	{
-		$path = isset($item['path']) ? $item['path'] : '';
-		$anchor = isset($item['anchor']) ? $item['anchor'] : '';
-
-		return site_url($path) . $anchor;
 	}
 
 	private function render($view, $data)

@@ -28,16 +28,16 @@
 				</div>
 				<div class="pyramid-meta-list">
 					<ul>
-						<li><strong>WhatsApp</strong><span><?php echo $company['phone']; ?></span></li>
-						<li><strong>Email</strong><span><?php echo $company['email']; ?></span></li>
-						<li><strong>Alamat</strong><span><?php echo $company['address']; ?></span></li>
+						<li><strong>WhatsApp</strong><span>+62 851 5772 0203</span></li>
+						<li><strong>Email</strong><span>marketing@ptpsig.com</span></li>
+						<li><strong>Alamat</strong><span>Jl. Musi No. 30, Sekarputih, Sumberejo, Kec. Sukodono, Kabupaten Lumajang, Jawa Timur 67352, Indonesia</span></li>
 						<li><strong>Jam</strong><span>Senin - Sabtu: 08.00 - 17.00 WIB</span></li>
 					</ul>
 				</div>
 			</div>
 			<div class="col-lg-6">
 				<div class="home-contact-thumb">
-					<img src="<?php echo $asset_path; ?>/images/home-contact-thumb.jpg" alt="Kontak <?php echo $company['name']; ?>">
+					<img src="<?php echo $asset_path; ?>/images/home-contact-thumb.jpg" alt="Kontak Piramidsoft">
 				</div>
 			</div>
 		</div>

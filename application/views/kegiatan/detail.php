@@ -3,10 +3,14 @@
 if (!function_exists('pyramid_public_image_url')) {
 	function pyramid_public_image_url($path, $asset_path, $base_path)
 	{
+		if (empty($path)) {
+			$path = 'img_pyramid/ASSET WEB PROFILE/BERSAMA MEREKA/diskusi-session-with-client.PNG';
+		}
 		return strpos($path, 'upload/') === 0 ? $base_path . '/' . $path : $asset_path . '/' . $path;
 	}
 }
 $activity_year = !empty($activity['date_iso']) ? date('Y', strtotime($activity['date_iso'])) : '-';
+$activity_detail_label = !empty($activity['detail_label']) ? $activity['detail_label'] : 'Studi Kasus - ' . $activity['category'];
 ?>
 <section class="pyramid-detail-section">
 	<div class="container">
@@ -25,7 +29,7 @@ $activity_year = !empty($activity['date_iso']) ? date('Y', strtotime($activity['
 			</aside>
 			<article class="pyramid-detail-content">
 				<header class="pyramid-detail-hero">
-					<span class="pyramid-detail-label"><?php echo htmlspecialchars($activity['detail_label'], ENT_QUOTES, 'UTF-8'); ?></span>
+					<span class="pyramid-detail-label"><?php echo htmlspecialchars($activity_detail_label, ENT_QUOTES, 'UTF-8'); ?></span>
 					<h1><?php echo htmlspecialchars($activity['title'], ENT_QUOTES, 'UTF-8'); ?></h1>
 					<p class="pyramid-detail-summary"><?php echo htmlspecialchars($activity['excerpt'], ENT_QUOTES, 'UTF-8'); ?></p>
 				</header>
@@ -45,7 +49,7 @@ $activity_year = !empty($activity['date_iso']) ? date('Y', strtotime($activity['
 		</div>
 	</div>
 </section>
-<section class="pyramid-detail-cta"><div class="container"><div class="pyramid-consultation"><div><span class="pyramid-detail-cta-label">Punya kebutuhan unik?</span><h2>Diskusikan Website atau Sistem yang<br>Ingin Anda Bangun</h2><p>Kami bantu memetakan kebutuhan, alur kerja, dan pilihan pengembangan yang paling masuk akal untuk project Anda.</p></div><a class="main-btn" href="https://wa.me/<?php echo preg_replace('/[^0-9]/', '', $company['phone']); ?>" target="_blank" rel="noopener noreferrer">Konsultasi Project</a></div></div></section>
+<section class="pyramid-detail-cta"><div class="container"><div class="pyramid-consultation"><div><span class="pyramid-detail-cta-label">Punya kebutuhan unik?</span><h2>Diskusikan Website atau Sistem yang<br>Ingin Anda Bangun</h2><p>Kami bantu memetakan kebutuhan, alur kerja, dan pilihan pengembangan yang paling masuk akal untuk project Anda.</p></div><a class="main-btn" href="https://api.whatsapp.com/send?phone=6285157720203" target="_blank" rel="noopener noreferrer">Konsultasi Project</a></div></div></section>
 <?php
 $related_activities = array();
 foreach ($activities as $related_activity) {
